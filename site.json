@@ -23,7 +23,7 @@
         "gaID": null
       },
       "created": 1721491387,
-      "updated": 1721492439,
+      "updated": 1721492677,
       "git": {
         "vendor": "github",
         "branch": "gh-pages"
@@ -39,11 +39,11 @@
       "name": "Haxor Blog theme",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
-        "image": "",
+        "image": "files/0f44322615eb1c8aa447a3339dcdfb80-profile.jpg",
         "imageAlt": null,
         "imageLink": null,
         "hexCode": "#3f51b5",
-        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "cssVariable": "--simple-colors-default-theme-blue-7",
         "icon": "av:library-add"
       },
       "regions": {}
