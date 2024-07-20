@@ -84,6 +84,14 @@
             "type": "image/jpeg",
             "name": "profile.jpg",
             "size": 53101
+          },
+          {
+            "path": "[object Object]0f44322615eb1c8aa447a3339dcdfb80-profile.jpg",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho-blog/files/0f44322615eb1c8aa447a3339dcdfb80-profile.jpg",
+            "url": "files/0f44322615eb1c8aa447a3339dcdfb80-profile.jpg",
+            "type": "image/jpeg",
+            "name": "0f44322615eb1c8aa447a3339dcdfb80-profile.jpg",
+            "size": 53101
           }
         ]
       }
