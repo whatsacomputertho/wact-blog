@@ -57,5 +57,22 @@
       "type": "own"
     }
   },
-  "items": []
+  "items": [
+    {
+      "id": "item-91a956bd-7327-40af-919d-111b3abdc41e",
+      "indent": 0,
+      "location": "pages/item-91a956bd-7327-40af-919d-111b3abdc41e/index.html",
+      "slug": "page",
+      "order": 0,
+      "parent": null,
+      "title": "Page",
+      "description": "",
+      "metadata": {
+        "created": 1721493204,
+        "updated": 1721493204,
+        "images": [],
+        "videos": []
+      }
+    }
+  ]
 }
