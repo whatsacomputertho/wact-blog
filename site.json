@@ -82,6 +82,22 @@
         "icon": "lrn:page",
         "status": ""
       }
+    },
+    {
+      "id": "item-1407670b-7509-40c7-81e2-cec368f61da1",
+      "indent": 0,
+      "location": "pages/item-1407670b-7509-40c7-81e2-cec368f61da1/index.html",
+      "slug": "page",
+      "order": 1,
+      "parent": null,
+      "title": "Page",
+      "description": "",
+      "metadata": {
+        "created": 1722204429,
+        "updated": 1722204429,
+        "images": [],
+        "videos": []
+      }
     }
   ]
 }
