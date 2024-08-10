@@ -69,7 +69,7 @@
       "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer. ​ ​During ​this ​time, &amp;",
       "metadata": {
         "created": 1721493204,
-        "updated": 1723313492,
+        "updated": 1723313556,
         "images": {},
         "videos": {},
         "published": true,
@@ -94,7 +94,7 @@
       "description": "\n",
       "metadata": {
         "created": 1722204429,
-        "updated": 1723313492,
+        "updated": 1723313556,
         "images": {},
         "videos": {},
         "published": true,
@@ -122,7 +122,7 @@
         "created": 1723313455,
         "images": [],
         "videos": [],
-        "updated": 1723313492,
+        "updated": 1723313556,
         "published": true,
         "status": ""
       }
@@ -141,25 +141,9 @@
         "created": 1723313455,
         "images": [],
         "videos": [],
-        "updated": 1723313492,
+        "updated": 1723313556,
         "published": true,
         "status": ""
-      }
-    },
-    {
-      "id": "item-38265596-9e35-4ce1-a884-9f3da7c27122",
-      "indent": 0,
-      "location": "pages/item-38265596-9e35-4ce1-a884-9f3da7c27122/index.html",
-      "slug": "page",
-      "order": 1,
-      "parent": null,
-      "title": "Page",
-      "description": "",
-      "metadata": {
-        "created": 1723313543,
-        "updated": 1723313543,
-        "images": [],
-        "videos": []
       }
     }
   ]
