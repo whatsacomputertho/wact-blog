@@ -23,7 +23,7 @@
         "gaID": null
       },
       "created": 1721491387,
-      "updated": 1721498811,
+      "updated": 1723313455,
       "git": {
         "vendor": "github",
         "branch": "gh-pages"
@@ -69,7 +69,7 @@
       "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer. ​ ​During ​this ​time, &amp;",
       "metadata": {
         "created": 1721493204,
-        "updated": 1721498579,
+        "updated": 1723313455,
         "images": {},
         "videos": {},
         "published": true,
@@ -94,7 +94,7 @@
       "description": "\n",
       "metadata": {
         "created": 1722204429,
-        "updated": 1722209329,
+        "updated": 1723313455,
         "images": {},
         "videos": {},
         "published": true,
@@ -103,8 +103,43 @@
         "image": "https://www.geneseo.edu/~aguilar/public/notes/Real-Analysis-HTML/figures/cantor-set.png",
         "tags": "Math,Analysis,Real,Numbers",
         "locked": false,
-        "readtime": 2,
-        "icon": "lrn:page"
+        "readtime": 3,
+        "icon": "lrn:page",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-4c0116d1-5627-43f3-9031-00fc06664ae4",
+      "indent": 0,
+      "location": "pages/item-4c0116d1-5627-43f3-9031-00fc06664ae4/index.html",
+      "slug": "what's-completeness,-though?",
+      "order": 2,
+      "parent": null,
+      "title": "What's Completeness, Though?",
+      "description": "",
+      "metadata": {
+        "locked": false,
+        "created": 1723313455,
+        "images": [],
+        "videos": [],
+        "updated": 1723313455
+      }
+    },
+    {
+      "id": "item-0167285d-e880-4873-b001-7efcf3927ce3",
+      "indent": 0,
+      "location": "pages/item-0167285d-e880-4873-b001-7efcf3927ce3/index.html",
+      "slug": "what's-countability,-though?",
+      "order": 3,
+      "parent": null,
+      "title": "What's Countability, Though?",
+      "description": "",
+      "metadata": {
+        "locked": false,
+        "created": 1723313455,
+        "images": [],
+        "videos": [],
+        "updated": 1723313455
       }
     }
   ]
