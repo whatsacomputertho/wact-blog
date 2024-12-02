@@ -143,7 +143,17 @@
         "created": 1733169633,
         "updated": 1733169633,
         "images": [],
-        "videos": []
+        "videos": [],
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\usda-soil-texture-triangle.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/usda-soil-texture-triangle.png",
+            "url": "files/usda-soil-texture-triangle.png",
+            "type": "image/png",
+            "name": "usda-soil-texture-triangle.png",
+            "size": 112118
+          }
+        ]
       }
     }
   ]
