@@ -129,6 +129,22 @@
         "image": "https://www.geneseo.edu/~aguilar/public/notes/Real-Analysis-HTML/figures/cantor-set.png",
         "status": ""
       }
+    },
+    {
+      "id": "item-74313d48-ea34-4d70-8051-4988c0d38aa2",
+      "indent": 0,
+      "location": "pages/item-74313d48-ea34-4d70-8051-4988c0d38aa2/index.html",
+      "slug": "page",
+      "order": 1,
+      "parent": null,
+      "title": "Page",
+      "description": "",
+      "metadata": {
+        "created": 1733169633,
+        "updated": 1733169633,
+        "images": [],
+        "videos": []
+      }
     }
   ]
 }
