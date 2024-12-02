@@ -137,11 +137,11 @@
       "slug": "page",
       "order": 2,
       "parent": null,
-      "title": "What's Soil Science, Though?",
+      "title": "Page",
       "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.&#160; The book is called \"Urban Farming\" by Thomas J. Fox.&#160; It covers the topic of urban ",
       "metadata": {
         "created": 1733169633,
-        "updated": 1733172163,
+        "updated": 1733172256,
         "images": {},
         "videos": {},
         "files": [
@@ -164,7 +164,7 @@
         ],
         "published": true,
         "hideInMenu": false,
-        "image": "files/usda-soil-texture-triangle.png",
+        "image": "files/soil-texture-diagram.webp",
         "locked": false,
         "readtime": 1
       }
