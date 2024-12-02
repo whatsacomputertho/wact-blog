@@ -94,13 +94,13 @@
       "description": "\n",
       "metadata": {
         "created": 1722204429,
-        "updated": 1733169629,
+        "updated": 1733172360,
         "images": {},
         "videos": {},
         "published": true,
         "pageType": "content",
         "hideInMenu": false,
-        "image": "https://www.geneseo.edu/~aguilar/public/notes/Real-Analysis-HTML/figures/cantor-set.png",
+        "image": "files/cantor-set.png",
         "tags": "Math,Analysis,Real,Numbers",
         "locked": false,
         "readtime": 3,
@@ -137,7 +137,17 @@
         "locked": false,
         "readtime": 1,
         "image": "https://www.geneseo.edu/~aguilar/public/notes/Real-Analysis-HTML/figures/cantor-set.png",
-        "status": ""
+        "status": "",
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\b41a4e2ea23ac471ba4e3d5efc622fc0-cantor-set.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/b41a4e2ea23ac471ba4e3d5efc622fc0-cantor-set.png",
+            "url": "files/b41a4e2ea23ac471ba4e3d5efc622fc0-cantor-set.png",
+            "type": "image/png",
+            "name": "b41a4e2ea23ac471ba4e3d5efc622fc0-cantor-set.png",
+            "size": 7800
+          }
+        ]
       }
     },
     {
