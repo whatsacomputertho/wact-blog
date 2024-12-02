@@ -23,7 +23,7 @@
         "gaID": null
       },
       "created": 1721491387,
-      "updated": 1723313603,
+      "updated": 1733169529,
       "git": {
         "vendor": "github",
         "branch": "gh-pages"
@@ -69,7 +69,7 @@
       "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer. ​ ​During ​this ​time, &amp;",
       "metadata": {
         "created": 1721493204,
-        "updated": 1723313603,
+        "updated": 1733169529,
         "images": {},
         "videos": {},
         "published": true,
@@ -94,7 +94,7 @@
       "description": "\n",
       "metadata": {
         "created": 1722204429,
-        "updated": 1723315262,
+        "updated": 1733169529,
         "images": {},
         "videos": {},
         "published": true,
@@ -110,7 +110,7 @@
     },
     {
       "id": "item-37e5ae52-d866-4d97-9794-5fa3286e5866",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-37e5ae52-d866-4d97-9794-5fa3286e5866/index.html",
       "slug": "real-analysis/completeness",
       "order": 0,
@@ -119,14 +119,32 @@
       "description": "One way to characterize the real numbers \\mathbb{R}  \n\n is to simply take an axiomatic approach. ​ ​That is to say that we will first boil their nature down to a single property or s",
       "metadata": {
         "created": 1723313607,
-        "updated": 1723315504,
+        "updated": 1733169529,
         "images": {},
         "videos": {},
         "published": true,
         "hideInMenu": false,
         "locked": false,
         "readtime": 1,
-        "image": "https://www.geneseo.edu/~aguilar/public/notes/Real-Analysis-HTML/figures/cantor-set.png"
+        "image": "https://www.geneseo.edu/~aguilar/public/notes/Real-Analysis-HTML/figures/cantor-set.png",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-790186ff-d982-4fb7-9176-ed7ed68e0434",
+      "indent": 0,
+      "location": "pages/item-790186ff-d982-4fb7-9176-ed7ed68e0434/index.html",
+      "slug": "what's-soil-science,-though?",
+      "order": 2,
+      "parent": null,
+      "title": "What's Soil Science, Though?",
+      "description": "",
+      "metadata": {
+        "locked": false,
+        "created": 1733169529,
+        "images": [],
+        "videos": [],
+        "updated": 1733169529
       }
     }
   ]
