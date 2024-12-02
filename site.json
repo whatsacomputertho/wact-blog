@@ -161,7 +161,7 @@
       "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called ",
       "metadata": {
         "created": 1733169633,
-        "updated": 1733172282,
+        "updated": 1733172408,
         "images": {},
         "videos": {},
         "files": [
@@ -188,11 +188,19 @@
             "type": "image/webp",
             "name": "e796c97a8dd82d81c2cdc673edc5baa2-soil-texture-diagram.webp",
             "size": 246396
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\5e82f3466c47de155238f8d00edc690f-usda-soil-texture-triangle.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/5e82f3466c47de155238f8d00edc690f-usda-soil-texture-triangle.png",
+            "url": "files/5e82f3466c47de155238f8d00edc690f-usda-soil-texture-triangle.png",
+            "type": "image/png",
+            "name": "5e82f3466c47de155238f8d00edc690f-usda-soil-texture-triangle.png",
+            "size": 71651
           }
         ],
         "published": true,
         "hideInMenu": false,
-        "image": "files/usda-soil-texture-triangle.png",
+        "image": "files/e796c97a8dd82d81c2cdc673edc5baa2-soil-texture-diagram.webp",
         "locked": false,
         "readtime": 1
       }
