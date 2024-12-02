@@ -105,7 +105,17 @@
         "locked": false,
         "readtime": 3,
         "icon": "lrn:page",
-        "status": ""
+        "status": "",
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\cantor-set.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/cantor-set.png",
+            "url": "files/cantor-set.png",
+            "type": "image/png",
+            "name": "cantor-set.png",
+            "size": 7800
+          }
+        ]
       }
     },
     {
@@ -137,11 +147,11 @@
       "slug": "page",
       "order": 2,
       "parent": null,
-      "title": "Page",
-      "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.&#160; The book is called \"Urban Farming\" by Thomas J. Fox.&#160; It covers the topic of urban ",
+      "title": "What's Soil Science, Though?",
+      "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called ",
       "metadata": {
         "created": 1733169633,
-        "updated": 1733172256,
+        "updated": 1733172282,
         "images": {},
         "videos": {},
         "files": [
@@ -164,7 +174,7 @@
         ],
         "published": true,
         "hideInMenu": false,
-        "image": "files/soil-texture-diagram.webp",
+        "image": "files/usda-soil-texture-triangle.png",
         "locked": false,
         "readtime": 1
       }
