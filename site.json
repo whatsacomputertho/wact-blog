@@ -135,15 +135,15 @@
       "indent": 0,
       "location": "pages/item-74313d48-ea34-4d70-8051-4988c0d38aa2/index.html",
       "slug": "page",
-      "order": 1,
+      "order": 2,
       "parent": null,
-      "title": "Page",
-      "description": "",
+      "title": "What's Soil Science, Though?",
+      "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.&#160; The book is called \"Urban Farming\" by Thomas J. Fox.&#160; It covers the topic of urban ",
       "metadata": {
         "created": 1733169633,
-        "updated": 1733169633,
-        "images": [],
-        "videos": [],
+        "updated": 1733172163,
+        "images": {},
+        "videos": {},
         "files": [
           {
             "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\usda-soil-texture-triangle.png",
@@ -152,8 +152,21 @@
             "type": "image/png",
             "name": "usda-soil-texture-triangle.png",
             "size": 112118
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\soil-texture-diagram.webp",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/soil-texture-diagram.webp",
+            "url": "files/soil-texture-diagram.webp",
+            "type": "image/webp",
+            "name": "soil-texture-diagram.webp",
+            "size": 246396
           }
-        ]
+        ],
+        "published": true,
+        "hideInMenu": false,
+        "image": "files/usda-soil-texture-triangle.png",
+        "locked": false,
+        "readtime": 1
       }
     }
   ]
