@@ -66,10 +66,10 @@
       "order": 0,
       "parent": null,
       "title": "What's 'What's a Computer, Though' Though?",
-      "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer. ​ ​During ​this ​time, &amp;",
+      "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer.",
       "metadata": {
         "created": 1721493204,
-        "updated": 1733169629,
+        "updated": 1733175472,
         "images": {},
         "videos": {},
         "published": true,
@@ -91,10 +91,10 @@
       "order": 1,
       "parent": null,
       "title": "What's Real Analysis, Though?",
-      "description": "\n",
+      "description": "During my time at Penn State, I hesitated to fully commit to a mathematics degree.  By the time I did finally commit to pursuing a math degree, I only had enough time",
       "metadata": {
         "created": 1722204429,
-        "updated": 1733172360,
+        "updated": 1733175327,
         "images": {},
         "videos": {},
         "published": true,
@@ -126,10 +126,10 @@
       "order": 0,
       "parent": "item-1407670b-7509-40c7-81e2-cec368f61da1",
       "title": "What's Completeness, Though?",
-      "description": "One way to characterize the real numbers \\mathbb{R}  \n\n is to simply take an axiomatic approach. ​ ​That is to say that we will first boil their nature down to a single property or s",
+      "description": "One way to characterize the real numbers is to simply take an axiomatic approach. ​ ​That is to say that we will first boil their nature down to a single property",
       "metadata": {
         "created": 1723313607,
-        "updated": 1733172378,
+        "updated": 1733175413,
         "images": {},
         "videos": {},
         "published": true,
@@ -158,10 +158,10 @@
       "order": 2,
       "parent": null,
       "title": "What's Soil Science, Though?",
-      "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called ",
+      "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called Urban Farming by Thomas J. Fox.",
       "metadata": {
         "created": 1733169633,
-        "updated": 1733172492,
+        "updated": 1733175359,
         "images": {},
         "videos": {},
         "files": [
@@ -216,7 +216,7 @@
         ],
         "published": true,
         "hideInMenu": false,
-        "image": "files/09c4d611ed3ace17e24c16b1ca620f82-usda-soil-texture-triangle.png",
+        "image": "files/soil-texture-triangle.png",
         "locked": false,
         "readtime": 1
       }
