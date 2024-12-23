@@ -221,6 +221,22 @@
         "readtime": 1,
         "status": ""
       }
+    },
+    {
+      "id": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
+      "indent": 0,
+      "location": "pages/item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1/index.html",
+      "slug": "page-1",
+      "order": 1,
+      "parent": null,
+      "title": "Page",
+      "description": "",
+      "metadata": {
+        "created": 1734996130,
+        "updated": 1734996130,
+        "images": [],
+        "videos": []
+      }
     }
   ]
 }
