@@ -235,7 +235,17 @@
         "created": 1734996130,
         "updated": 1734996130,
         "images": [],
-        "videos": []
+        "videos": [],
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\wact-fbsim.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/wact-fbsim.png",
+            "url": "files/wact-fbsim.png",
+            "type": "image/png",
+            "name": "wact-fbsim.png",
+            "size": 130488
+          }
+        ]
       }
     }
   ]
