@@ -23,7 +23,7 @@
         "gaID": null
       },
       "created": 1721491387,
-      "updated": 1734996091,
+      "updated": 1734996114,
       "git": {
         "vendor": "github",
         "branch": "gh-pages"
@@ -69,7 +69,7 @@
       "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer.",
       "metadata": {
         "created": 1721493204,
-        "updated": 1734996091,
+        "updated": 1734996114,
         "images": {},
         "videos": {},
         "published": true,
@@ -94,7 +94,7 @@
       "description": "During my time at Penn State, I hesitated to fully commit to a mathematics degree.  By the time I did finally commit to pursuing a math degree, I only had enough time",
       "metadata": {
         "created": 1722204429,
-        "updated": 1734996091,
+        "updated": 1734996114,
         "images": {},
         "videos": {},
         "published": true,
@@ -129,7 +129,7 @@
       "description": "One way to characterize the real numbers is to simply take an axiomatic approach. ​ ​That is to say that we will first boil their nature down to a single property",
       "metadata": {
         "created": 1723313607,
-        "updated": 1734996091,
+        "updated": 1734996114,
         "images": {},
         "videos": {},
         "published": true,
@@ -161,7 +161,7 @@
       "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called Urban Farming by Thomas J. Fox.",
       "metadata": {
         "created": 1733169633,
-        "updated": 1734996091,
+        "updated": 1734996114,
         "images": {},
         "videos": {},
         "files": [
@@ -220,23 +220,6 @@
         "locked": false,
         "readtime": 1,
         "status": ""
-      }
-    },
-    {
-      "id": "item-07edd4ce-b4b1-4346-8e54-dea65de2197d",
-      "indent": 0,
-      "location": "pages/item-07edd4ce-b4b1-4346-8e54-dea65de2197d/index.html",
-      "slug": "what's-footballsim,-though?",
-      "order": 3,
-      "parent": null,
-      "title": "What's FootballSim, Though?",
-      "description": "",
-      "metadata": {
-        "locked": false,
-        "created": 1734996091,
-        "images": [],
-        "videos": [],
-        "updated": 1734996091
       }
     }
   ]
