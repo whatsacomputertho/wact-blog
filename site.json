@@ -285,11 +285,11 @@
       "slug": "fbsim/box-score-model",
       "order": 1,
       "parent": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
-      "title": "FootballSim Box Score Generator Model",
+      "title": "Football Box Score Generator Model Training",
       "description": "To model a game as complex as American football requires a deep understanding of real-world football data.",
       "metadata": {
         "created": 1736114267,
-        "updated": 1736120068,
+        "updated": 1736120198,
         "images": {},
         "videos": {},
         "published": true,

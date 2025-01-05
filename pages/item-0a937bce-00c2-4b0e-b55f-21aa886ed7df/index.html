@@ -14,7 +14,9 @@
 
 
 
+
 <media-image source="files/offense-clustering.png" card citation="The offense K-Means clustering" accent-color="grey" size="wide" offset="none" slot="col-1" link="files/offense-clustering.png" alt="Historic football offense clustering" disable-zoom></media-image>
+
 
 
 
@@ -52,7 +54,9 @@
 
 
 
+
 <media-image source="files/away-score-model.png" card citation="The mean score model for away teams" accent-color="grey" size="wide" offset="none" slot="col-2" alt="Mean away score over normalized skill differential (linreg)" link="files/away-score-model.png" disable-zoom></media-image>
+
 
 
 
@@ -60,10 +64,12 @@
 <grid-plate disable-responsive layout="1-1"><media-image source="files/away-score-std-model.png" card accent-color="grey" size="wide" offset="none" slot="col-2" alt="Standard deviation of away score over normalized skill differential (polyreg)" link="files/away-score-std-model.png" citation="The standard deviation score model for away teams" disable-zoom></media-image>
 
 
+
 <media-image source="files/home-score-std-model.png" card citation="The standard deviation score model for home teams" slot="col-1" accent-color="grey" size="wide" offset="none" alt="Standard deviation of home score over normalized skill differential (polyreg)" link="files/home-score-std-model.png" disable-zoom></media-image>
+
 
 
 </grid-plate>
 <h3 data-original-level="H3" id="header-d61edb17-2f46-3c98-1c44-c757ac50dc7f">Model Runtime Design<br></h3>
 <p>So why did I train these particular models?&#160; My plan is, I will implement these models directly as&#160;private functions in a Rust struct.&#160; Then atop these models I will implement a function which will fetch the mean and standard deviation and use them to construct a normal distribution, then sample the normal distribution to generate the team's score.</p>
-<p>This &#8203;will all be discussed in my next blog, <i>FootballSim Box Score Generator Model Implementation</i>.<br></p>
+<p>This &#8203;will all be discussed in my next blog,&#160;<i>Football Box Score Generator Application</i>.<br></p>
