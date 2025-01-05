@@ -307,6 +307,14 @@
             "type": "image/png",
             "name": "offense-clustering.png",
             "size": 45997
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\defense-clustering.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/defense-clustering.png",
+            "url": "files/defense-clustering.png",
+            "type": "image/png",
+            "name": "defense-clustering.png",
+            "size": 48695
           }
         ]
       }
