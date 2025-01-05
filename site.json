@@ -323,6 +323,14 @@
             "type": "image/png",
             "name": "scores-by-home-away.png",
             "size": 29085
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\home-score-model.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/home-score-model.png",
+            "url": "files/home-score-model.png",
+            "type": "image/png",
+            "name": "home-score-model.png",
+            "size": 30773
           }
         ]
       }
