@@ -22,12 +22,10 @@ Options:
 <p>At the time of writing this blog, the &#8203;project &#8203;consists &#8203;of &#8203;three Rust source files:</p>
 <ul><li role="textbox"><code target="_blank">main.rs</code>: Contains the main function which runs on execution of the CLI.  Also contains some helper functions for requesting The Football Database's HTML using <a href="https://docs.rs/reqwest/latest/reqwest/" target="_blank">reqwest</a> and scraping it using <a href="https://docs.rs/scraper/latest/scraper/" target="_blank">scraper</a> into a <code>BoxScore</code> instance.<br></li><li role="textbox"> <code target="_blank">cli.rs</code>: Contains the CLI definition.  For this project I used <a href="https://docs.rs/clap/latest/clap/_derive/index.html" target="_blank">clap_derive</a>, which is an extension of the <a href="https://docs.rs/clap/latest/clap/index.html" target="_blank">clap</a> crate in which the CLI is structured as a collection of structs and enums equipped with the proper trait implementations using derive macros.<br></li><li role="textbox"><code target="_blank">boxscore.rs</code>: Contains the <code>BoxScore</code> struct implementation.  I used <a href="https://serde.rs/" target="_blank">serde</a> and <a href="https://docs.rs/serde_json/latest/serde_json/" target="_blank">serde_json</a> to enable the <code>BoxScore</code> struct to be easily serialized into JSON format and deserialized from JSON format.</li></ul>
 <p>From a web scraping perspective <a href="https://github.com/whatsacomputertho/fbdb-webscrape/blob/179ab48d23d8d38afe250ddd20988b51747b2c13/src/main.rs#L1-L108" target="_blank">the helper functions</a> which make use of reqwest and scraper are really the stars of the show.&#160; The fundamental aspects of these functions are given in code samples below.&#160; Firstly, I instantiated a reqwest client and used it to fetch a webpage:<br></p>
-<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">use reqwest::blocking::Client;
-
-/// Get the box scores HTML response from the football database as a string
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">/// Get the box scores HTML response from the football database as a string
 fn get_html() -&gt; String {
     // Initialize a reqwest blocking client
-    let client = Client::new();
+    let client = reqwest::blocking::Client::new();
     
     // Query the webserver and get a Response
     // The response is wrapped in a Future and a Result
