@@ -60,10 +60,10 @@ fn parse_box_scores(res_html: &amp;String) -&gt; Vec&lt;String&gt; {
     let mut paragraph_strings: Vec&lt;String&gt; = Vec::new();
 
     // Initialize an HTML scraper from the response HTML
-    let document = Html::parse_document(res_html);
+    let document = scraper::Html::parse_document(res_html);
 
     // Select all paragraph elements
-    let paragraph_selector = Selector::parse("p").unwrap();
+    let paragraph_selector = scraper::Selector::parse("p").unwrap();
     let paragraphs = document.select(&amp;paragraph_selector);
 
     // For each paragraph element, get its text and append
