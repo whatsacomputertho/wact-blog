@@ -12,7 +12,9 @@
 
 
 
+
 <media-image source="files/offense-clustering.png" card citation="The offense K-Means clustering" accent-color="grey" size="wide" offset="none" slot="col-1" link="files/offense-clustering.png" alt="Historic football offense clustering" disable-zoom></media-image>
+
 
 
 
@@ -39,16 +41,23 @@
   "std_score": 8.8825934299
 }</template></code-sample>
 <p>Here, &#8203;<code>norm_diff</code> represents the skill differential normalized into range [0, 1].&#160; Then the other two features are the mean and standard deviation of the scores observed across games in which an offense faced off against a defense with this skill differential between the two.</p>
-<p>The summaries clearly indicated to me that there was a linear relationship between skill differential and mean score, which is exactly what I had hoped.&#160; I also sensed that there was a parabolic relationship between skill differential and standard deviation score, but I was less confident in my intuition on that one.</p>
-<p>Nonetheless, I ended up training four regression models, two for home teams and two for away teams.</p>
+<p>The summaries clearly indicated to me that there was a linear relationship between skill differential and mean score, which is exactly what I had aimed for.&#160; I also sensed that there was a parabolic relationship between skill differential and standard deviation score, but I was less confident in my intuition on that one.</p>
+<h2 id="header-3fb04686-9c78-7a89-0806-bb3889e1e5d1">Model &#8203;Training</h2>
+<p>I ended up <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/labeled.py#L96-L149" target="_blank" slot="col-1">training four regression models</a>, two for home teams and two for away teams.</p>
 <ol><li role="textbox">A ​linear ​regression ​model ​of ​mean ​score ​over ​normalized ​skill ​differential</li><li role="textbox">A ​degree-2 polynomial regression model of standard deviation score over normalized skill differential</li></ol>
 <p>The &#8203;models &#8203;are &#8203;pictured &#8203;below, graphed against test data</p>
 <grid-plate disable-responsive layout="1-1"><media-image source="files/home-score-model.png" card citation="The mean score model for home teams" accent-color="grey" size="wide" offset="none" slot="col-1" alt="Mean home score over normalized skill differential (linreg)" link="files/home-score-model.png" disable-zoom></media-image>
 
+
 <media-image source="files/away-score-model.png" card citation="The mean score model for away teams" accent-color="grey" size="wide" offset="none" slot="col-2" alt="Mean away score over normalized skill differential (linreg)" link="files/away-score-model.png" disable-zoom></media-image>
 
+
 </grid-plate>
-<grid-plate disable-responsive layout="1-1"><media-image source="files/away-score-std-model.png" card accent-color="grey" size="wide" offset="none" slot="col-2" alt="Standard deviation of away score over normalized skill differential (polyreg)" link="files/away-score-std-model.png" citation="The standard deviation score model for away teams"></media-image>
-<media-image source="files/home-score-std-model.png" card citation="The standard deviation score model for home teams" slot="col-1" accent-color="grey" size="wide" offset="none" alt="Standard deviation of home score over normalized skill differential (polyreg)" link="files/home-score-std-model.png"></media-image>
+<grid-plate disable-responsive layout="1-1"><media-image source="files/away-score-std-model.png" card accent-color="grey" size="wide" offset="none" slot="col-2" alt="Standard deviation of away score over normalized skill differential (polyreg)" link="files/away-score-std-model.png" citation="The standard deviation score model for away teams" disable-zoom></media-image>
+
+<media-image source="files/home-score-std-model.png" card citation="The standard deviation score model for home teams" slot="col-1" accent-color="grey" size="wide" offset="none" alt="Standard deviation of home score over normalized skill differential (polyreg)" link="files/home-score-std-model.png" disable-zoom></media-image>
+
 </grid-plate>
-<p>asdf</p>
+<h3 id="header-d61edb17-2f46-3c98-1c44-c757ac50dc7f">Model Runtime Design<br></h3>
+<p>So why did I train these particular models?&#160; My plan is, I will implement these models directly as&#160;private functions in a Rust struct.&#160; Then atop these models I will implement a function which will fetch the mean and standard deviation and use them to construct a normal distribution, then sample the normal distribution to generate the team's score.</p>
+<p>This &#8203;will all be discussed in my next blog, <i>FootballSim Box Score Generator Model Implementation</i>.<br></p>
