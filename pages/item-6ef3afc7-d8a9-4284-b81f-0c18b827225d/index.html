@@ -88,7 +88,7 @@ fn parse_box_score(data: &amp;mut Select) -&gt; BoxScore {
 /// a Vec of BoxScore structs
 fn parse_box_scores(res_html: &amp;String) -&gt; Vec&lt;boxscore&gt; {
     // Initialize a Vec of BoxScores for the parsed data
-    let mut box_scores: Vec<boxscore> = Vec::new();
+    let mut box_scores: Vec&lt;boxscore&gt; = Vec::new();
 
     // Initialize an HTML scraper from the response HTML
     let document = Html::parse_document(res_html);
@@ -115,7 +115,7 @@ fn parse_box_scores(res_html: &amp;String) -&gt; Vec&lt;boxscore&gt; {
 
     // Return the vector of box scores
     box_scores
-}</boxscore></template></code-sample>
+}</template></code-sample>
 <p></p>
 <p>I could have implemented these helper functions a bit more properly.&#160; Looking forward, I may refactor the&#160;functions for fetching the HTML into a client struct, and then refactor the parsing functions into a "from" trait on my <code>BoxScore</code> struct.</p>
 <p>This being my first web scraping project, one of the main hurdles I faced was working around 403 error codes when fetching the HTML from The Football Database's web server.&#160; It turns out, web servers will typically block requests for HTML content unless the request header identifies the agent being used to load the content.&#160; In my case, I needed to add <a href="https://github.com/whatsacomputertho/fbdb-webscrape/blob/179ab48d23d8d38afe250ddd20988b51747b2c13/src/main.rs#L25" target="_blank">a User-Agent header mimicking a web browser</a> before it would return any HTML content.</p>
