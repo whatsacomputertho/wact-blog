@@ -8,7 +8,22 @@
 <p>Then, I plotted <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/boxscore.py#L110-L157" target="_blank">the mean against the median (which are two highly correlated features) and produced a K-Means clustering</a> of the plotted data.&#160; The clustering successfully clustered each offense and defense into five clusters where teams are clustered by their performance in terms of average points for and points against.</p>
 <grid-plate disable-responsive layout="1-1"><media-image source="files/defense-clustering.png" card citation="The defense K-Means clustering" accent-color="grey" size="wide" offset="none" link="files/defense-clustering.png" disable-zoom slot="col-2" alt="Historic football defense clustering"></media-image>
 
+
 <media-image source="files/offense-clustering.png" card citation="The offense K-Means clustering" accent-color="grey" size="wide" offset="none" slot="col-1" link="files/offense-clustering.png" alt="Historic football offense clustering" disable-zoom></media-image>
 
+
 </grid-plate>
-<p>I finally went back through each year's individual box scores and labeled them with each participating team's <code>offense_overall</code> and <code>defense_overall</code>.&#160; These values were integers ranging from 1-5 based on which cluster the team appeared in.&#160; If they were a high-scoring offense or low-scoring defense, they were assigned a 5; vice versa they were assigned a 1, and everything in between.<br slot="col-1"></p>
+<p>I then <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/boxscore.py#L159-L239" target="_blank">went back through each year's individual box scores and labeled them</a> with each participating team's <code>offense_overall</code> and <code>defense_overall</code>.&#160; These values were integers ranging from 1-5 based on which cluster the team appeared in.&#160; If they were a high-scoring offense or low-scoring defense, they were assigned a 5; vice versa they were assigned a 1, and everything in between.</p>
+<p>In my final pass through the data, I used each labeled box score to generate data entries like so</p>
+<code-sample type="json" copy-clipboard-button><template preserve-content="preserve-content">{
+  "offense_defense_differential": 3,
+  "score": 38,
+  "is_home": false
+}</template></code-sample>
+<p>asdf</p>
+<h3 id="header-66011930-1e6d-98e7-ea15-e5927acbbad2">Labeled &#8203;Data &#8203;Analysis</h3>
+<p>Now &#8203;that &#8203;all &#8203;of &#8203;my &#8203;box scores were labeled with each team's offensive and defensive skill ratings (in whose accuracy I was confident enough), I could start to engage in some real EDA in pursuit of a suitable model.</p>
+<p>The &#8203;first &#8203;thing &#8203;I &#8203;looked &#8203;at &#8203;was &#8203;simply <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/labeled.py#L83-L94" target="_blank">the performance of home versus away teams</a>.&#160; I wanted to answer the question - is there a measurable home field advantage in professional football?&#160; As it turns out, there is!</p>
+<media-image source="files/scores-by-home-away.png" card citation="This is my citation." accent-color="grey" size="wide" offset="none" link="files/scores-by-home-away.png"></media-image>
+<p>Here it can be seen that home teams historically have outscored away teams by roughly 2 to 3 points.&#160; I wasn't the first to discover this, <a href="https://www.foxsports.com/stories/nfl/nfl-odds-how-much-home-field-advantage-worth-spread" target="_blank">the sportsbooks generally recognize home field advantage to be 2.8 points</a> which seems to align with my findings here - a good sign over all.<br></p>
+<p>Next, I <br></p>
