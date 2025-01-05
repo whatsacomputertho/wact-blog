@@ -339,6 +339,14 @@
             "type": "image/png",
             "name": "home-score-std-model.png",
             "size": 48775
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\away-score-model.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/away-score-model.png",
+            "url": "files/away-score-model.png",
+            "type": "image/png",
+            "name": "away-score-model.png",
+            "size": 31207
           }
         ]
       }
