@@ -315,6 +315,14 @@
             "type": "image/png",
             "name": "defense-clustering.png",
             "size": 48695
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\scores-by-home-away.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/scores-by-home-away.png",
+            "url": "files/scores-by-home-away.png",
+            "type": "image/png",
+            "name": "scores-by-home-away.png",
+            "size": 29085
           }
         ]
       }
