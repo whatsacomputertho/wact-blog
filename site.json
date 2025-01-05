@@ -261,11 +261,11 @@
       "slug": "fbsim/box-score-model",
       "order": 0,
       "parent": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
-      "title": "FootballSim Box Score Generator Model",
+      "title": "Scraping NFL Box Scores from The Football Database",
       "description": "The first step of producing software capable of randomly generating a real-world phenomenon (such as football scores) is simple: study the real-world data.",
       "metadata": {
         "created": 1736098366,
-        "updated": 1736099161,
+        "updated": 1736108881,
         "images": {},
         "videos": {},
         "published": true,
@@ -274,7 +274,7 @@
         "tags": "fbsim,football,sim,machine,learning,data,science",
         "icon": "device:signal-cellular-4-bar",
         "locked": false,
-        "readtime": 1
+        "readtime": 4
       }
     }
   ]
