@@ -265,13 +265,13 @@
       "description": "The first step of producing software capable of randomly generating a real-world phenomenon (such as football scores) is simple: get the real-world data.",
       "metadata": {
         "created": 1736098366,
-        "updated": 1736114139,
+        "updated": 1736114326,
         "images": {},
         "videos": {},
         "published": true,
         "hideInMenu": false,
         "image": "files/wact-fbsim.png",
-        "tags": "fbsim,football,sim,machine,learning,data,science",
+        "tags": "fbsim,football,sim,data,science,web,scraping",
         "icon": "device:signal-cellular-4-bar",
         "locked": false,
         "readtime": 6
