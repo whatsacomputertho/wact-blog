@@ -298,7 +298,17 @@
         "image": "files/wact-fbsim.png",
         "tags": "football,simulation,machine,learning,data,science",
         "locked": false,
-        "readtime": 1
+        "readtime": 1,
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\offense-clustering.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/offense-clustering.png",
+            "url": "files/offense-clustering.png",
+            "type": "image/png",
+            "name": "offense-clustering.png",
+            "size": 45997
+          }
+        ]
       }
     }
   ]
