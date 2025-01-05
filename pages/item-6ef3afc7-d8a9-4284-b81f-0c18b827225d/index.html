@@ -21,7 +21,103 @@ Options:
 <p>This command allows the user to input a year, an output format, and an output file, and it will parse that year of box scores from The Football Database.&#160; In the future, I plan to circle back to this CLI and add new commands which can scrape the data I may need for my next iterations of this project.</p>
 <p>At the time of writing this blog, the &#8203;project &#8203;consists &#8203;of &#8203;three Rust source files:</p>
 <ul><li role="textbox"><code target="_blank">main.rs</code>: Contains the main function which runs on execution of the CLI.  Also contains some helper functions for requesting The Football Database's HTML using <a href="https://docs.rs/reqwest/latest/reqwest/" target="_blank">reqwest</a> and scraping it using <a href="https://docs.rs/scraper/latest/scraper/" target="_blank">scraper</a> into a <code>BoxScore</code> instance.<br></li><li role="textbox"> <code target="_blank">cli.rs</code>: Contains the CLI definition.  For this project I used <a href="https://docs.rs/clap/latest/clap/_derive/index.html" target="_blank">clap_derive</a>, which is an extension of the <a href="https://docs.rs/clap/latest/clap/index.html" target="_blank">clap</a> crate in which the CLI is structured as a collection of structs and enums equipped with the proper trait implementations using derive macros.<br></li><li role="textbox"><code target="_blank">boxscore.rs</code>: Contains the <code>BoxScore</code> struct implementation.  I used <a href="https://serde.rs/" target="_blank">serde</a> and <a href="https://docs.rs/serde_json/latest/serde_json/" target="_blank">serde_json</a> to enable the <code>BoxScore</code> struct to be easily serialized into JSON format and deserialized from JSON format.</li></ul>
-<p>From a web scraping perspective <a href="https://github.com/whatsacomputertho/fbdb-webscrape/blob/179ab48d23d8d38afe250ddd20988b51747b2c13/src/main.rs#L1-L108" target="_blank">the helper functions</a> which make use of reqwest and scraper are really the stars of the show, though I could have implemented them a bit more properly.&#160; Looking forward, I may refactor the&#160;functions for fetching the HTML into a client struct, and then refactor the parsing functions into a "from" trait on my <code>BoxScore</code> struct.</p>
+<p>From a web scraping perspective <a href="https://github.com/whatsacomputertho/fbdb-webscrape/blob/179ab48d23d8d38afe250ddd20988b51747b2c13/src/main.rs#L1-L108" target="_blank">the helper functions</a> which make use of reqwest and scraper are really the stars of the show.</p>
+<p>This &#8203;first function, given a year parameter, fetches that year's box score HTML page from The Football Database and returns it as a <code>String</code>.<br></p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">/// Get the box scores HTML response from the football database as a string
+fn get_box_scores(year: u32) -&gt; String {
+    // Initialize a blocking client
+    let client = Client::new();
+
+    // Query the football database for HTML response
+    let res = client.get(
+            &amp;format!("https://www.footballdb.com/games/index.html?lg=NFL&amp;yr={}", year)
+        )
+        .header(USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36")
+        .send();
+    
+    // Extract the html from the response
+    let res_str = res.unwrap().text().unwrap();
+    return res_str;
+}</template></code-sample>
+<p>These two functions then accept the box score HTML String fetched from The Football Database and process it into a <code>Vec&lt;BoxScore&gt;</code>, a vector of box score struct instances.</p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">/// Parse a box score from table data from the football database's box score
+/// table
+fn parse_box_score(data: &amp;mut Select) -&gt; BoxScore {
+    // Initialize selector for collapsable data
+    let collapsable_selector = Selector::parse("span.hidden-xs").unwrap();
+
+    // Extract the date box score property
+    let date_datum = data.next().unwrap();
+    let date: String = date_datum.select(&amp;collapsable_selector)
+        .flat_map(|el| el.text())
+        .collect();
+    
+    // Extract the away team box score property
+    let away_team_datum = data.next().unwrap();
+    let away_team: String = away_team_datum.select(&amp;collapsable_selector)
+        .flat_map(|el| el.text())
+        .collect();
+    
+    // Extract the away score box score property
+    let away_score_datum = data.next().unwrap();
+    let away_score_string: String = away_score_datum.text().collect();
+    let away_score: i32 = away_score_string.parse().unwrap();
+    
+    // Extract the home team box score property
+    let home_team_datum = data.next().unwrap();
+    let home_team: String = home_team_datum.select(&amp;collapsable_selector)
+        .flat_map(|el| el.text())
+        .collect();
+    
+    // Extract the home score box score property
+    let home_score_datum = data.next().unwrap();
+    let home_score_string: String = home_score_datum.text().collect();
+    let home_score: i32 = home_score_string.parse().unwrap();
+
+    // Initialize as a BoxScore
+    BoxScore::from_properties(
+        date,
+        away_team,
+        away_score,
+        home_team,
+        home_score
+    )
+}
+
+/// Parse the box scores from the HTML response from the football database into
+/// a Vec of BoxScore structs
+fn parse_box_scores(res_html: &amp;String) -&gt; Vec<boxscore> {
+    // Initialize a Vec of BoxScores for the parsed data
+    let mut box_scores: Vec<boxscore> = Vec::new();
+
+    // Initialize an HTML scraper from the response HTML
+    let document = Html::parse_document(res_html);
+
+    // Select all tables of class statistics
+    let table_selector = Selector::parse("table.statistics").unwrap();
+    let stat_tables = document.select(&amp;table_selector);
+
+    // For each table, parse each table row of class row0 or row1
+    for stat_table in stat_tables {
+        let row_selector = Selector::parse("tr.row0,tr.row1").unwrap();
+        let stat_rows = stat_table.select(&amp;row_selector);
+
+        // For each row, parse each datum
+        for stat_row in stat_rows {
+            let data_selector = Selector::parse("td").unwrap();
+            let mut stat_data = stat_row.select(&amp;data_selector);
+
+            // Parse each datum into a BoxScore and append
+            let box_score = parse_box_score(&amp;mut stat_data);
+            box_scores.push(box_score);
+        }
+    }
+
+    // Return the vector of box scores
+    box_scores
+}</boxscore></boxscore></template></code-sample>
+<p></p>
+<p>I could have implemented these helper functions a bit more properly.&#160; Looking forward, I may refactor the&#160;functions for fetching the HTML into a client struct, and then refactor the parsing functions into a "from" trait on my <code>BoxScore</code> struct.</p>
 <p>This being my first web scraping project, one of the main hurdles I faced was working around 403 error codes when fetching the HTML from The Football Database's web server.&#160; It turns out, web servers will typically block requests for HTML content unless the request header identifies the agent being used to load the content.&#160; In my case, I needed to add <a href="https://github.com/whatsacomputertho/fbdb-webscrape/blob/179ab48d23d8d38afe250ddd20988b51747b2c13/src/main.rs#L25" target="_blank">a User-Agent header mimicking a web browser</a> before it would return any HTML content.</p>
 <p>Beyond &#8203;the &#8203;web &#8203;scraping &#8203;aspect of the project, I also spent a lot of time fiddling with clap_derive.&#160; I find clap_derive to be very useful for standing up a quick CLI, but very difficult to fine tune over time.&#160; This is partially because documentation is limited and discussion online typically refers to the core clap module.&#160; The types instantiated when using clap_derive differ from those instantiated using clap, leading to occasional confusing "method not found" errors.</p>
 <p>Despite a few challenges along the way, I was able to finish this first implementation in about a day's worth of programming, which I consider a success.&#160; More information on its usage can be found <a href="https://github.com/whatsacomputertho/fbdb-webscrape/blob/main/README.md" target="_blank">in its readme file</a>.<br></p>
