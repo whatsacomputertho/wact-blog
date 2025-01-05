@@ -261,11 +261,11 @@
       "slug": "fbsim/box-score-model",
       "order": 0,
       "parent": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
-      "title": "Scraping Football Box Scores from The Football Database",
+      "title": "Football Box Score Web Scraper",
       "description": "The first step of producing software capable of randomly generating a real-world phenomenon (such as football scores) is simple: get the real-world data.",
       "metadata": {
         "created": 1736098366,
-        "updated": 1736109080,
+        "updated": 1736109108,
         "images": {},
         "videos": {},
         "published": true,
