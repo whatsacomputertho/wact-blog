@@ -11,7 +11,9 @@
 
 
 
+
 <media-image source="files/offense-clustering.png" card citation="The offense K-Means clustering" accent-color="grey" size="wide" offset="none" slot="col-1" link="files/offense-clustering.png" alt="Historic football offense clustering" disable-zoom></media-image>
+
 
 
 
@@ -41,7 +43,12 @@
 <p>Nonetheless, I ended up training four regression models, two for home teams and two for away teams.</p>
 <ol><li role="textbox">A ​linear ​regression ​model ​of ​mean ​score ​over ​normalized ​skill ​differential</li><li role="textbox">A ​degree-2 polynomial regression model of standard deviation score over normalized skill differential</li></ol>
 <p>The &#8203;models &#8203;are &#8203;pictured &#8203;below, graphed against test data</p>
-<grid-plate disable-responsive layout="1-1"><media-image source="files/home-score-model.png" card citation="The mean score model for home teams" accent-color="grey" size="wide" offset="none" slot="col-1" alt="Mean home score over normalized skill differential (linreg)" link="files/home-score-model.png"></media-image>
-<media-image source="files/away-score-model.png" card citation="The mean score model for away teams" accent-color="grey" size="wide" offset="none" slot="col-2" alt="Mean away score over normalized skill differential (linreg)" link="files/away-score-model.png"></media-image>
+<grid-plate disable-responsive layout="1-1"><media-image source="files/home-score-model.png" card citation="The mean score model for home teams" accent-color="grey" size="wide" offset="none" slot="col-1" alt="Mean home score over normalized skill differential (linreg)" link="files/home-score-model.png" disable-zoom></media-image>
+
+<media-image source="files/away-score-model.png" card citation="The mean score model for away teams" accent-color="grey" size="wide" offset="none" slot="col-2" alt="Mean away score over normalized skill differential (linreg)" link="files/away-score-model.png" disable-zoom></media-image>
+
+</grid-plate>
+<grid-plate disable-responsive layout="1-1"><media-image source="files/away-score-std-model.png" card accent-color="grey" size="wide" offset="none" slot="col-2" alt="Standard deviation of away score over normalized skill differential (polyreg)" link="files/away-score-std-model.png" citation="The standard deviation score model for away teams"></media-image>
+<media-image source="files/home-score-std-model.png" card citation="The standard deviation score model for home teams" slot="col-1" accent-color="grey" size="wide" offset="none" alt="Standard deviation of home score over normalized skill differential (polyreg)" link="files/home-score-std-model.png"></media-image>
 </grid-plate>
 <p>asdf</p>
