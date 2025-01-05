@@ -10,7 +10,9 @@
 
 
 
+
 <media-image source="files/offense-clustering.png" card citation="The offense K-Means clustering" accent-color="grey" size="wide" offset="none" slot="col-1" link="files/offense-clustering.png" alt="Historic football offense clustering" disable-zoom></media-image>
+
 
 
 
@@ -28,10 +30,18 @@
 <p>The &#8203;first &#8203;thing &#8203;I &#8203;looked &#8203;at &#8203;was &#8203;simply <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/labeled.py#L83-L94" target="_blank">the performance of home versus away teams</a>.&#160; I wanted to answer the question - is there a measurable home field advantage in professional football?&#160; As it turns out, there is!</p>
 <media-image source="files/scores-by-home-away.png" card citation="This is my citation." accent-color="grey" size="wide" offset="none" link="files/scores-by-home-away.png" disable-zoom></media-image>
 <p>Here it can be seen that home teams historically have outscored away teams by roughly 2 to 3 points.&#160; I wasn't the first to discover this, <a href="https://www.foxsports.com/stories/nfl/nfl-odds-how-much-home-field-advantage-worth-spread" target="_blank">the sportsbooks generally recognize home field advantage to be 2.8 points</a> which seems to align with my findings here - a good sign over all.<br></p>
-<p>Next, <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/labeled.py#L32-L59" target="_blank">I summarized all the scores from across each skill differential</a> to see if there were any apparent trends.&#160; I produced two files, away.json and home.json, each included data entries like so, one for each of the 9 skill differentials.</p>
+<p>Next, <a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/blob/0d7fc0b385ad52c59718ede9004bebcdb5a1c982/cli/labeled.py#L32-L59" target="_blank">I summarized all the scores from across each skill differential</a> to see if there were any apparent trends.&#160; I produced two files, <code>away.json</code> and <code>home.json</code>, each included data entries like so, one for each of the 9 skill differentials.</p>
 <code-sample type="json" copy-clipboard-button><template preserve-content="preserve-content">{
   "norm_diff": 0.5,
   "mean_score": 19.3722963645,
   "std_score": 8.8825934299
 }</template></code-sample>
+<p>Here, &#8203;<code>norm_diff</code> represents the skill differential normalized into range [0, 1].&#160; Then the other two features are the mean and standard deviation of the scores observed across games in which an offense faced off against a defense with this skill differential between the two.</p>
+<p>The summaries clearly indicated to me that there was a linear relationship between skill differential and mean score, which is exactly what I had hoped.&#160; I also sensed that there was a parabolic relationship between skill differential and standard deviation score, but I was less confident in my intuition on that one.</p>
+<p>Nonetheless, I ended up training four regression models, two for home teams and two for away teams.</p>
+<ol><li role="textbox">A ​linear ​regression ​model ​of ​mean ​score ​over ​normalized ​skill ​differential</li><li role="textbox">A ​degree-2 polynomial regression model of standard deviation score over normalized skill differential</li></ol>
+<p>The &#8203;models &#8203;are &#8203;pictured &#8203;below, graphed against test data</p>
+<grid-plate disable-responsive layout="1-1"><media-image source="files/home-score-model.png" card citation="The mean score model for home teams" accent-color="grey" size="wide" offset="none" slot="col-1" alt="Mean home score over normalized skill differential (linreg)" link="files/home-score-model.png"></media-image>
+<media-image source="files/away-score-model.png" card citation="The mean score model for away teams" accent-color="grey" size="wide" offset="none" slot="col-2" alt="Mean away score over normalized skill differential (linreg)" link="files/away-score-model.png"></media-image>
+</grid-plate>
 <p>asdf</p>
