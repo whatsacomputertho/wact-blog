@@ -331,6 +331,14 @@
             "type": "image/png",
             "name": "home-score-model.png",
             "size": 30773
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\home-score-std-model.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/home-score-std-model.png",
+            "url": "files/home-score-std-model.png",
+            "type": "image/png",
+            "name": "home-score-std-model.png",
+            "size": 48775
           }
         ]
       }
