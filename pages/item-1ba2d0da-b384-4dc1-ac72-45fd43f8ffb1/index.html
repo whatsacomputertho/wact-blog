@@ -1,1 +1,12 @@
-<p></p>
+
+<p>Pet projects: as engineers we can all relate to the experience of having way too many of them, and the experience of having that one pet project about which we are particularly passionate.&#160; For me, my highest regarded pet project is to develop a football simulator capable of simulating my and my brother's imaginary football leagues.&#160; In fact, this is the pet project that led me to pursue software as a career path.</p>
+<p>As I've grown as a software engineer through my career, I've learned of the value of properly scoping software projects.&#160; I've also learned through personal experience that pet projects are especially vulnerable to improper scoping.&#160; This is partially due to our passion and personal connection to them - we strive for perfection out of our pet projects and as a result they never fully come to fruition.</p>
+<p>With this iteration of my football simulator game, I'd like to impose a very well-defined scope to keep myself accountable, and my goals realistic.&#160; I'd like to first approach the problem from the highest level and slowly drill down into the finer-grained details as I progress.</p>
+<h2 data-original-level="H2" id="header-0f9449d0-7dde-118f-cfb4-d5003c0f68a4">Scope</h2>
+<p id="header-96cc519f-c179-259e-67d4-9a1b2229264a">For the first iteration, I will implement a model that can randomly generate the final score of a football game (sometimes called a "<b>Box Score</b>") given each team's offensive and defensive skill levels.&#160; Additionally,<br></p>
+<ul><li role="textbox">The model should be a good fit against real football data, meaning there
+ will be some initial data science involved before any real development 
+occurs.</li><li role="textbox">Once implemented, the model itself and supporting utilities 
+should be packaged as a library atop which a CLI and API can later be 
+implemented.</li><li role="textbox">A ​single-page web UI should be developed which interacts with the API.</li><li role="textbox">The build &amp; deployment of the full stack should be simple, repeatable, and semi-automated for both local and production deployments.<br></li></ul>
+<p>In this series of blogs I will walk through my progress on each pillar of this project's first iteration, from the data science, to the web development, to the CI/CD, and everything in-between.&#160; Once this first iteration is completed, I will assess my progress and determine how I plan to approach my next iteration in a new blog series.<br></p>

@@ -226,16 +226,16 @@
       "id": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
       "indent": 0,
       "location": "pages/item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1/index.html",
-      "slug": "page-1",
-      "order": 1,
+      "slug": "fbsim",
+      "order": 3,
       "parent": null,
-      "title": "Page",
-      "description": "",
+      "title": "What's FootballSim, Though?",
+      "description": "Pet projects: as engineers we can all relate to the experience of having way too many of them, and the experience of having that one pet project",
       "metadata": {
         "created": 1734996130,
-        "updated": 1734996130,
-        "images": [],
-        "videos": [],
+        "updated": 1736097520,
+        "images": {},
+        "videos": {},
         "files": [
           {
             "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\wact-fbsim.png",
@@ -245,7 +245,13 @@
             "name": "wact-fbsim.png",
             "size": 130488
           }
-        ]
+        ],
+        "published": true,
+        "hideInMenu": false,
+        "image": "files/wact-fbsim.png",
+        "tags": "Football,Machine,Learning,ML,AI",
+        "locked": false,
+        "readtime": 2
       }
     }
   ]
