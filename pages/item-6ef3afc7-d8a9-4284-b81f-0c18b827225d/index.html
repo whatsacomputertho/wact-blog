@@ -37,82 +37,27 @@ fn get_html_string() -&gt; String {
     let res_str = res.unwrap().text().unwrap();
     return res_str;
 }</template></code-sample>
-<p>These two functions then accept the box score HTML String fetched from The Football Database and process it into a <code>Vec&lt;BoxScore&gt;</code>, a vector of box score struct instances.</p>
-<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">/// Parse a box score from table data from the football database's box score
-/// table
-fn parse_box_score(data: &amp;mut Select) -&gt; BoxScore {
-    // Initialize selector for collapsable data
-    let collapsable_selector = Selector::parse("span.hidden-xs").unwrap();
-
-    // Extract the date box score property
-    let date_datum = data.next().unwrap();
-    let date: String = date_datum.select(&amp;collapsable_selector)
-        .flat_map(|el| el.text())
-        .collect();
-    
-    // Extract the away team box score property
-    let away_team_datum = data.next().unwrap();
-    let away_team: String = away_team_datum.select(&amp;collapsable_selector)
-        .flat_map(|el| el.text())
-        .collect();
-    
-    // Extract the away score box score property
-    let away_score_datum = data.next().unwrap();
-    let away_score_string: String = away_score_datum.text().collect();
-    let away_score: i32 = away_score_string.parse().unwrap();
-    
-    // Extract the home team box score property
-    let home_team_datum = data.next().unwrap();
-    let home_team: String = home_team_datum.select(&amp;collapsable_selector)
-        .flat_map(|el| el.text())
-        .collect();
-    
-    // Extract the home score box score property
-    let home_score_datum = data.next().unwrap();
-    let home_score_string: String = home_score_datum.text().collect();
-    let home_score: i32 = home_score_string.parse().unwrap();
-
-    // Initialize as a BoxScore
-    BoxScore::from_properties(
-        date,
-        away_team,
-        away_score,
-        home_team,
-        home_score
-    )
-}
-
-/// Parse the box scores from the HTML response from the football database into
-/// a Vec of BoxScore structs
-fn parse_box_scores(res_html: &amp;String) -&gt; Vec&lt;boxscore&gt; {
-    // Initialize a Vec of BoxScores for the parsed data
-    let mut box_scores: Vec&lt;boxscore&gt; = Vec::new();
+<p>Then, I instantiated an HTML scraper and used it to parse the HTML.&#160; One particularly useful way to parse the HTML is to use CSS selectors (which are provided by scraper via its <code>Selector</code> struct), shown below.<br></p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">/// Parse all paragraph elements from example.com
+fn parse_box_scores(res_html: &amp;String) -&gt; Vec&lt;String&gt; {
+    // Initialize a mutable vector of strings to append to
+    let mut paragraph_strings: Vec&lt;String&gt; = Vec::new();
 
     // Initialize an HTML scraper from the response HTML
     let document = Html::parse_document(res_html);
 
-    // Select all tables of class statistics
-    let table_selector = Selector::parse("table.statistics").unwrap();
-    let stat_tables = document.select(&amp;table_selector);
+    // Select all paragraph elements
+    let paragraph_selector = Selector::parse("p").unwrap();
+    let paragraphs = document.select(&amp;paragraph_selector);
 
-    // For each table, parse each table row of class row0 or row1
-    for stat_table in stat_tables {
-        let row_selector = Selector::parse("tr.row0,tr.row1").unwrap();
-        let stat_rows = stat_table.select(&amp;row_selector);
-
-        // For each row, parse each datum
-        for stat_row in stat_rows {
-            let data_selector = Selector::parse("td").unwrap();
-            let mut stat_data = stat_row.select(&amp;data_selector);
-
-            // Parse each datum into a BoxScore and append
-            let box_score = parse_box_score(&amp;mut stat_data);
-            box_scores.push(box_score);
-        }
+    // For each paragraph element, get its text and append
+    for paragraph in paragraphs {
+        let paragraph_string: String = paragraph.text();
+        paragraph_strings.push(paragraph_string);
     }
 
-    // Return the vector of box scores
-    box_scores
+    // Return the vector of paragraph strings
+    paragraph_strings
 }</template></code-sample>
 <p></p>
 <p>I could have implemented these helper functions a bit more properly.&#160; Looking forward, I may refactor the&#160;functions for fetching the HTML into a client struct, and then refactor the parsing functions into a "from" trait on my <code>BoxScore</code> struct.</p>
