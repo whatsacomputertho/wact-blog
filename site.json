@@ -289,13 +289,13 @@
       "description": "To model a game as complex as American football requires a deep understanding of real-world football data.",
       "metadata": {
         "created": 1736114267,
-        "updated": 1736114714,
+        "updated": 1736114751,
         "images": {},
         "videos": {},
         "published": true,
         "hideInMenu": false,
         "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d",
-        "image": "files/profile.jpg",
+        "image": "files/wact-fbsim.png",
         "tags": "football,simulation,machine,learning,data,science",
         "locked": false,
         "readtime": 1
