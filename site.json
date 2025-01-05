@@ -154,14 +154,14 @@
       "id": "item-74313d48-ea34-4d70-8051-4988c0d38aa2",
       "indent": 0,
       "location": "pages/item-74313d48-ea34-4d70-8051-4988c0d38aa2/index.html",
-      "slug": "page",
+      "slug": "soil-science",
       "order": 2,
       "parent": null,
       "title": "What's Soil Science, Though?",
       "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called Urban Farming by Thomas J. Fox.",
       "metadata": {
         "created": 1733169633,
-        "updated": 1734996114,
+        "updated": 1736098321,
         "images": {},
         "videos": {},
         "files": [
@@ -252,6 +252,22 @@
         "tags": "Football,Machine,Learning,ML,AI",
         "locked": false,
         "readtime": 2
+      }
+    },
+    {
+      "id": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d",
+      "indent": 0,
+      "location": "pages/item-6ef3afc7-d8a9-4284-b81f-0c18b827225d/index.html",
+      "slug": "page",
+      "order": 1,
+      "parent": null,
+      "title": "Page",
+      "description": "",
+      "metadata": {
+        "created": 1736098366,
+        "updated": 1736098366,
+        "images": [],
+        "videos": []
       }
     }
   ]
