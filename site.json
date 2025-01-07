@@ -80,7 +80,17 @@
         "locked": false,
         "readtime": 2,
         "icon": "lrn:page",
-        "status": ""
+        "status": "",
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\rabbids.jpg",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/rabbids.jpg",
+            "url": "files/rabbids.jpg",
+            "type": "image/jpeg",
+            "name": "rabbids.jpg",
+            "size": 38030
+          }
+        ]
       }
     },
     {
