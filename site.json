@@ -364,15 +364,22 @@
       "indent": 0,
       "location": "pages/item-23e2afc5-3e91-4a94-b396-9ab780bf4604/index.html",
       "slug": "page",
-      "order": 1,
-      "parent": null,
-      "title": "Page",
-      "description": "",
+      "order": 2,
+      "parent": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
+      "title": "Football Box Score Generator Application",
+      "description": "\n",
       "metadata": {
         "created": 1736257173,
-        "updated": 1736257173,
-        "images": [],
-        "videos": []
+        "updated": 1736257255,
+        "images": {},
+        "videos": {},
+        "published": true,
+        "hideInMenu": false,
+        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df",
+        "image": "files/wact-fbsim.png",
+        "tags": "Football,Simulation,Rust,Crate,API,UI",
+        "locked": false,
+        "readtime": 1
       }
     }
   ]
