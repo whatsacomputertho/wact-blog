@@ -476,6 +476,14 @@
             "type": "image/png",
             "name": "pokemon.png",
             "size": 116864
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\wombats.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/wombats.png",
+            "url": "files/wombats.png",
+            "type": "image/png",
+            "name": "wombats.png",
+            "size": 5690
           }
         ]
       }
