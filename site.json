@@ -452,6 +452,14 @@
             "type": "image/jpeg",
             "name": "fwams.jpg",
             "size": 127277
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\dudedudes.jpg",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/dudedudes.jpg",
+            "url": "files/dudedudes.jpg",
+            "type": "image/jpeg",
+            "name": "dudedudes.jpg",
+            "size": 125268
           }
         ]
       }
