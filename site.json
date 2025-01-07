@@ -428,6 +428,14 @@
             "type": "image/webp",
             "name": "wolves.webp",
             "size": 18888
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\tulips.jpg",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/tulips.jpg",
+            "url": "files/tulips.jpg",
+            "type": "image/jpeg",
+            "name": "tulips.jpg",
+            "size": 14249
           }
         ]
       }
