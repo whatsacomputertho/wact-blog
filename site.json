@@ -388,6 +388,14 @@
             "type": "image/png",
             "name": "monsters.png",
             "size": 86561
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\melonheads-official.jpg.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/melonheads-official.jpg.png",
+            "url": "files/melonheads-official.jpg.png",
+            "type": "image/png",
+            "name": "melonheads-official.jpg.png",
+            "size": 219785
           }
         ]
       }
