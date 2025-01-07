@@ -412,6 +412,14 @@
             "type": "image/png",
             "name": "allstars_alt.png",
             "size": 102187
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\grouse_alt.jpg",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/grouse_alt.jpg",
+            "url": "files/grouse_alt.jpg",
+            "type": "image/jpeg",
+            "name": "grouse_alt.jpg",
+            "size": 11007
           }
         ]
       }
