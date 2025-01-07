@@ -460,6 +460,14 @@
             "type": "image/jpeg",
             "name": "dudedudes.jpg",
             "size": 125268
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\segas.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/segas.png",
+            "url": "files/segas.png",
+            "type": "image/png",
+            "name": "segas.png",
+            "size": 50806
           }
         ]
       }
