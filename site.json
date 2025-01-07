@@ -468,6 +468,14 @@
             "type": "image/png",
             "name": "segas.png",
             "size": 50806
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\pokemon.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/pokemon.png",
+            "url": "files/pokemon.png",
+            "type": "image/png",
+            "name": "pokemon.png",
+            "size": 116864
           }
         ]
       }
