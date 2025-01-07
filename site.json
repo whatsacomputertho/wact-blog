@@ -265,7 +265,7 @@
       "description": "The first step of producing software capable of randomly generating a real-world phenomenon (such as football scores) is simple: get the real-world data.",
       "metadata": {
         "created": 1736098366,
-        "updated": 1736120226,
+        "updated": 1736257283,
         "images": {},
         "videos": {},
         "published": true,
@@ -275,7 +275,7 @@
         "icon": "device:signal-cellular-4-bar",
         "locked": false,
         "readtime": 6,
-        "relatedItems": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df"
+        "relatedItems": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604"
       }
     },
     {
