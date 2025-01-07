@@ -494,6 +494,38 @@
             "type": "image/png",
             "name": "wombats.png",
             "size": 5690
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\wirgles.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/wirgles.png",
+            "url": "files/wirgles.png",
+            "type": "image/png",
+            "name": "wirgles.png",
+            "size": 67756
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\rockets.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/rockets.png",
+            "url": "files/rockets.png",
+            "type": "image/png",
+            "name": "rockets.png",
+            "size": 85059
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\mario.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/mario.png",
+            "url": "files/mario.png",
+            "type": "image/png",
+            "name": "mario.png",
+            "size": 37983
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\eepeeps.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/eepeeps.png",
+            "url": "files/eepeeps.png",
+            "type": "image/png",
+            "name": "eepeeps.png",
+            "size": 365130
           }
         ]
       }
