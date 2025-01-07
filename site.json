@@ -420,6 +420,14 @@
             "type": "image/jpeg",
             "name": "grouse_alt.jpg",
             "size": 11007
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\wolves.webp",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/wolves.webp",
+            "url": "files/wolves.webp",
+            "type": "image/webp",
+            "name": "wolves.webp",
+            "size": 18888
           }
         ]
       }
