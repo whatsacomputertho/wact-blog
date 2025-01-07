@@ -379,7 +379,17 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Simulation,Rust,Crate,API,UI",
         "locked": false,
-        "readtime": 1
+        "readtime": 1,
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\monsters.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/monsters.png",
+            "url": "files/monsters.png",
+            "type": "image/png",
+            "name": "monsters.png",
+            "size": 86561
+          }
+        ]
       }
     }
   ]
