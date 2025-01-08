@@ -1,7 +1,10 @@
 
 <p>Understanding and modeling the real-world football data will only get us so far.&#160; Now we need to architect an application around our model.&#160; In this blog, I will walk through the architecture of the full-stack web application I developed around my football box score generator model.</p>
 <h2 data-original-level="H2" id="header-0a8b44dc-f7ec-9b8b-031b-f36901d07660">Architecture<br></h2>
-<p>Describe &#8203;the &#8203;architecture &#8203;of &#8203;the &#8203;application &#8203;here</p>
+<p>The application consists of &#8203;the &#8203;following &#8203;components &#8203;at &#8203;a &#8203;high &#8203;level</p>
+<ul><li role="textbox">A ​Rust ​crate (<a href="https://github.com/whatsacomputertho/fbsim-core" target="_blank">fbsim-core</a>) containing the core structures and functions for running football simulations. ​ ​It ​is ​<a href="https://crates.io/crates/fbsim-core" target="_blank">published ​on ​crates.io</a>, ​with <a href="https://docs.rs/fbsim-core/1.0.0-alpha.3/fbsim_core/" target="_blank">​public documentation on doc.rs</a><br></li><li role="textbox">A ​Rust ​CLI ​(<a href="https://github.com/whatsacomputertho/fbsim-cli" target="_blank">fbsim-cli</a>) wrapping the core library and providing a quick and easy interface for running football simulations on the command-line</li><li role="textbox">A ​Rust ​​API ​(<a href="https://github.com/whatsacomputertho/fbsim-api" target="_blank">fbsim-api</a>) packaging the core library as a REST API and making it available to HTTP clients</li><li role="textbox">A ​vanilla web UI (<a href="https://github.com/whatsacomputertho/fbsim-ui" target="_blank">fbsim-ui</a>) composed of VanillaJS, W3C-standard web components which leverage the FBSim API as a back-end</li></ul>
+<div>In addition, the API and UI are containerized for deployment natively using docker-compose, and for deployment on a Kubernetes-based container orchestration platform.<br></div>
+<media-image source="files/fbsim-architecture.png" card accent-color="grey" size="wide" offset="none" citation="FBSim architecture diagram"></media-image>
 <h2 data-original-level="H2" id="header-6e41b55e-79c9-107b-0a69-659da51fbe42">Implementation</h2>
 <p>Brief &#8203;intro &#8203;on &#8203;implementation</p>
 <h3 data-original-level="H3" id="header-5f0f5fd4-0080-e17a-97de-ce0ff16250d4">Rust Crate<br></h3>
