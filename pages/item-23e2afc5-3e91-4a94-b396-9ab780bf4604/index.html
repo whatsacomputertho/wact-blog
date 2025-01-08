@@ -33,8 +33,22 @@ Options:
       --home &lt;HOME&gt;             A path to a file specifying the game's home team
       --away &lt;AWAY&gt;             A path to a file specifying the game's away team
   -h, --help                    Print help</template></code-sample>
+<p>Here &#8203;is &#8203;a &#8203;short &#8203;GIF of me executing the game sim command for two example teams,<br></p>
 <p>asdf</p>
-<p>asdf</p>
+<p>and the main function is concise enough that I can copy-paste it into this blog in its current form without risking taking up too much space (though you would need to explore the source code for any sort of context as to what this is doing).<br></p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">fn main() {
+    // Parse the command-line args
+    let fbdb_cli = FbsimCli::parse();
+
+    // Perform the subcommand
+    let command = fbdb_cli.command();
+    match &amp;command {
+        FbsimSubcommand::Game { command } =&gt; match command {
+            FbsimGameSubcommand::Sim(args) =&gt; simulate_game(args.clone())
+        }
+    }
+}</template></code-sample>
+<p>Simple, short and sweet in its current form.&#160; But do not underestimate the power of command-line tools.&#160; Part of the reason I wrote this CLI was because I can envision potential future scenarios in which it may be useful to leverage in tandem with the web-based API and UI services.<br></p>
 <h3 data-original-level="H3" id="header-0fd23eae-f64f-be5d-21f1-0180d7939a04">Rust API<br></h3>
 <p>Brief overview of the fbsim API implementation<br></p>
 <h3 data-original-level="H3" id="header-7f73e902-3073-9b9e-8158-852053ba8c87">Vanilla JS Web &#8203;Component UI<br></h3>

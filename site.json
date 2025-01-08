@@ -380,7 +380,7 @@
       "description": "Understanding and modeling the real-world football data will only get us so far.  Now we need to architect an application around our model.",
       "metadata": {
         "created": 1736257173,
-        "updated": 1736362351,
+        "updated": 1736362686,
         "images": {},
         "videos": {},
         "published": true,
@@ -389,7 +389,7 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Simulation,Rust,Crate,API,UI",
         "locked": false,
-        "readtime": 4,
+        "readtime": 5,
         "files": [
           {
             "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\monsters.png",
