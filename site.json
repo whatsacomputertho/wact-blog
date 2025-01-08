@@ -526,6 +526,14 @@
             "type": "image/png",
             "name": "eepeeps.png",
             "size": 365130
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io\\files\\fbsim-architecture.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-repo\\whatsacomputertho.github.io/files/fbsim-architecture.png",
+            "url": "files/fbsim-architecture.png",
+            "type": "image/png",
+            "name": "fbsim-architecture.png",
+            "size": 90277
           }
         ]
       }
