@@ -33,15 +33,13 @@ Options:
       --home &lt;HOME&gt;             A path to a file specifying the game's home team
       --away &lt;AWAY&gt;             A path to a file specifying the game's away team
   -h, --help                    Print help</template></code-sample>
-<p>Here &#8203;is &#8203;a &#8203;short &#8203;GIF of me executing the game sim command for two example teams,<br></p>
-<p>asdf</p>
-<p>and the main function is concise enough that I can copy-paste it into this blog in its current form without risking taking up too much space (though you would need to explore the source code for any sort of context as to what this is doing).<br></p>
+<p><a href="https://github.com/whatsacomputertho/fbsim-cli/blob/main/README.md" target="_blank">In the repository's README</a> you can find &#8203;a &#8203;short &#8203;GIF of me executing the game sim command for two example teams, and the main function is concise enough that I can copy-paste it into this blog in its current form without risking taking up too much space (though you would need to <a href="https://github.com/whatsacomputertho/fbsim-cli/tree/main/src" target="_blank">explore the source code</a> for any sort of context as to what this is doing).<br></p>
 <code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">fn main() {
     // Parse the command-line args
-    let fbdb_cli = FbsimCli::parse();
+    let fbsim_cli = FbsimCli::parse();
 
     // Perform the subcommand
-    let command = fbdb_cli.command();
+    let command = fbsim_cli.command();
     match &amp;command {
         FbsimSubcommand::Game { command } =&gt; match command {
             FbsimGameSubcommand::Sim(args) =&gt; simulate_game(args.clone())
