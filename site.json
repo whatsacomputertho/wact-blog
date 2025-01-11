@@ -545,17 +545,15 @@
       "slug": "page",
       "order": 2,
       "parent": null,
-      "title": "Football Box Score Generator Deployment",
+      "title": "Page",
       "description": "\n",
       "metadata": {
         "created": 1736616782,
-        "updated": 1736616841,
+        "updated": 1736616872,
         "images": {},
         "videos": {},
         "published": true,
         "hideInMenu": false,
-        "image": "files/wact-fbsim.png",
-        "tags": "Football,SImulation,Docker,Kubernetes,CICD",
         "locked": false,
         "readtime": 1
       }
