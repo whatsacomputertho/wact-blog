@@ -75,12 +75,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -137,7 +139,7 @@ pub struct BoxScore {
 <p>The thing that I think makes this user interface noteworthy is my use of <a href="https://github.com/WICG/webcomponents" target="_blank">the web component browser standard</a> on the front-end.&#160; I really value this standard as it provides a mechanism to develop highly modular HTML, CSS, and JavaScript.&#160; I will provide a few examples below demonstrating what I mean by this.</p>
 <p>First &#8203;of &#8203;all, &#8203;<a href="https://github.com/whatsacomputertho/fbsim-ui/blob/main/static/views/index.hbs" target="_blank">here ​is ​the HTML template that the web server serves up</a>.&#160; You'll notice that the HTML is surprisingly concise, and upon closer inspection, you'll notice that the HTML refers to non-standard tags, such as <code>wact-nav</code> and <code>wact-game-sim</code>.&#160; These are the web components that I wrote; they are defined and exported in the JavaScript files that are imported just below their use in the HTML. &#8203; &#8203;The <code>wact-game-sim</code> component is just the tip of the iceberg, it consists of a few building-block components that I also wrote in those JavaScript imports.<br></p>
 <p>Let's use the <code target="_blank">wact-team-select</code> component as our introductory example and proof-of-concept.&#160; This component is <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/main/static/js/wact-team-select.js" target="_blank">defined in wact-team-select.js</a>.&#160; The <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L1-L154" target="_blank">first thing I do to define my element</a> is I create a new template element in the DOM.&#160; As the template element's inner HTML, I add all the native HTML that composes my component together with a style tag with all the CSS needed to style the HTML.</p>
-<p>The <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L155-L168" target="_blank">next thing I do to define my element</a> is I define a new class which extends the HTMLElement base class.&#160; In the class constructor, I &#8203;attach and open &#8203;the &#8203;shadow &#8203;root, and I clone all of the aforementioned HTML and CSS content from my template into the shadow root.</p>
+<p>The <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L155-L168" target="_blank">next thing I do to define my element</a> is I define a new class which extends the HTMLElement base class.&#160; In the class constructor, I &#8203;attach and open &#8203;the &#8203;shadow &#8203;root, and I clone all of the aforementioned HTML and CSS content from my template into the shadow root. &#8203; &#8203;Though &#8203;not &#8203;included &#8203;in &#8203;the &#8203;below &#8203;snippet, I also generally use this constructor to attach any sort of event listeners that need to be attached to any elements within this component's shadow root.<br></p>
 <code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">const wactTeamSelect = document.createElement("template");
 wactTeamSelect.innerHTML = `...` // Your HTML and CSS goes here
 class WACTTeamSelect extends HTMLElement {
@@ -150,5 +152,55 @@ class WACTTeamSelect extends HTMLElement {
         this.root.append(clone);
     }
 }</template></code-sample>
-<p>asdf</p>
+<p>The <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L170-L188" target="_blank">third thing I do to define my element</a> is I define its observed attributes.&#160; This is how you customize the set of values you can pass into the element when instantiated in the DOM.&#160; For reference, attributes to elements are like <code>src</code> is to the <code>img</code> tag (i.e. <code>&lt;img src="..."&gt;</code>), or like <code>href</code> is to the <code>a</code> tag in HTML (i.e. <code>&lt;a href="..."&gt;</code>).</p>
+<p>This is done by implementing the <code target="_blank">observedAttributes</code> and <code>attributeChangedCallback</code> methods.&#160; The <code>attributeChangedCallback</code> function defines how your element responds when one of its attributes is changed.&#160; In my case, I <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L207-L222" target="_blank">change the team select header</a> when <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L235-L240" target="_blank">the away attribute is toggled</a>.&#160; It also helps to implement getters and setters for your observed attributes so that you can validate their values when setting them, and fetch them from outside the class's scope if needed.&#8203;</p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">class WACTTeamSelect extends HTMLElement {
+  // ...(more code above)
+
+    // Define the allowed custom attributes
+    static get observedAttributes() {
+        return ["away"];
+    }
+
+    // Getter for away attribute
+    get away() {
+        return this.hasAttribute('away');
+    }
+
+    // Setter for the away attribute
+    set away(value) {
+        if(value) {
+            this.setAttribute('away', value);
+        }
+        else {
+            this.removeAttribute('away');
+        }
+    }
+
+    // Update the component when the away attribute is toggled
+    toggleAway() {
+        // Construct the header text for the component
+        let homeAwayText = "Home";
+        if(this.away) {
+            homeAwayText = "Away";
+        }
+
+        // Update the header text
+        let header = this.root.getElementById("team-select__name-input-label");
+        header.innerHTML = homeAwayText;
+
+        // Update the default team name
+        let nameInput = this.root.getElementById("team-select__name-input");
+        nameInput.value = `${homeAwayText} Team`;
+    }
+
+    //Handle values and changes to the attributes
+    attributeChangedCallback(attribute, previousValue, newValue) {
+        if (attribute.toLowerCase() === "away") {
+            this.toggleAway();
+        }
+    }
+
+  // ...(more code below)
+}</template></code-sample>
 <p>sdf</p>
