@@ -77,12 +77,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -168,7 +170,7 @@ class WACTTeamSelect extends HTMLElement {
     toggleAway() {
         // Construct the header text for the component
         let homeAwayText = "Home";
-        if(this.away) {
+        if (this.away) {
             homeAwayText = "Away";
         }
 
@@ -181,7 +183,7 @@ class WACTTeamSelect extends HTMLElement {
         nameInput.value = `${homeAwayText} Team`;
     }
 
-    //Handle values and changes to the attributes
+    // Handle changes to the attributes
     attributeChangedCallback(attribute, previousValue, newValue) {
         if (attribute.toLowerCase() === "away") {
             this.toggleAway();
