@@ -69,12 +69,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -100,8 +102,8 @@ fn game_sim(matchup: Json&lt;FootballMatchup&gt;) -&gt; Json&lt;BoxScore&gt; {
 }</template></code-sample>
 <p>One of the main challenges I took on while developing the API was automatically generating and serving OpenAPI documentation via the fbsim-api server.&#160; A really useful optional feature of Rocket is a library called <a href="https://github.com/GREsau/okapi" target="_blank">rocket-okapi</a>, which handles the auto-generation of OpenAPI docs.&#160; It defines the <code>#[openapi]</code> attribute (seen above) which can be assigned to an endpoint function.&#160; Okapi then parses the function signature and doc comments to populate the OpenAPI documentation.</p>
 <p>In &#8203;my &#8203;case, &#8203;my request and response schemas (<code>FootballMatchup</code> and <code>BoxScore</code> respectively) were custom structs that I developed in fbsim-core.&#160; Note that the <code>FootballMatchup</code> struct is a thin wrapper around the fbsim-core <code>FootballTeam</code> struct, it stores two teams, one as the home team and the other as the away team.&#160; And thus, Okapi could not derive their JSON schemas unless each struct derived the <code>JsonSchema</code> trait from rocket-okapi.</p>
-<p>This &#8203;would &#8203;mean &#8203;I &#8203;would &#8203;need &#8203;to &#8203;make &#8203;a &#8203;change &#8203;to &#8203;fbsim-core to bring in rocket-okapi as a dependency.&#160; But rocket-okapi is very heavy-weight and requires many dependencies of its own, without providing any value to the core library outside of this particular REST API implementation atop the core library.&#160; So to navigate this problem, I found that <a href="https://doc.rust-lang.org/cargo/reference/features.html#optional-dependencies" target="_blank" role="textbox">it's possible to configure optional dependencies in Rust crates</a>, and I took that route.</p>
-<p>To do so, &#8203;in &#8203;the &#8203;BoxScore struct, I added the <code>cfg</code> attribute on the rocket-okapi imports and the <code>cfg_attr</code> attribute on the struct itself.</p>
+<p>This &#8203;would &#8203;mean &#8203;I &#8203;would &#8203;need &#8203;to &#8203;make &#8203;a &#8203;change &#8203;to &#8203;fbsim-core to bring in rocket-okapi as a dependency.&#160; But rocket-okapi is very heavy-weight and requires many dependencies of its own, without providing any value to the core library outside of this particular REST API implementation atop the core library.&#160; So to navigate this problem, I found that <a href="https://doc.rust-lang.org/cargo/reference/features.html#optional-dependencies" target="_blank">it's possible to configure optional dependencies in Rust crates</a>, and I took that route.</p>
+<p>To do so, <a href="https://github.com/whatsacomputertho/fbsim-core/blob/a23b7c2865733bedb82676d365053a826f9db762/Cargo.toml#L19" target="_blank">I marked rocket-okapi as optional in my cargo.toml</a> and <a href="https://github.com/whatsacomputertho/fbsim-core/blob/a23b7c2865733bedb82676d365053a826f9db762/Cargo.toml#L22-L23" target="_blank">created a feature for it</a>.&#160; Then, using &#8203;the &#8203;<code>BoxScore</code> struct as an exaple, I added the <code>cfg</code> attribute on the rocket-okapi imports and the <code>cfg_attr</code> attribute on the structs which needed to optionally derive the <code>JsonSchema</code> trait from rocket-okapi.</p>
 <code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">#[cfg(feature = "rocket_okapi")]
 use rocket_okapi::okapi::schemars;
 #[cfg(feature = "rocket_okapi")]
@@ -119,7 +121,7 @@ pub struct BoxScore {
     away_team: String,
     away_score: i32
 }</template></code-sample>
-<p></p>
+<p>Now, &#8203;the &#8203;rocket_okapi feature is disabled by default when adding fbsim-core as a dependent Rust crate.&#160; But <a href="https://github.com/whatsacomputertho/fbsim-api/blob/789a0dd92d09a366ee6c9b48d1d2e846be6739b3/Cargo.toml#L9" target="_blank">it can be enabled optionally</a> for downstream implementations atop fbsim-core which need the fbsim-core structs to derive the <code>JsonSchema</code> trait.</p>
 <h3 data-original-level="H3" id="header-7f73e902-3073-9b9e-8158-852053ba8c87">Vanilla JS Web &#8203;Component UI<br></h3>
 <p>Brief overview of the fbsim UI implementation</p>
 <h2 data-original-level="H2" id="header-4d622995-9704-d957-3945-6ed78fe3ed7a">Deployment</h2>
