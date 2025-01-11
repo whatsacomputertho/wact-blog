@@ -76,12 +76,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -160,21 +162,6 @@ class WACTTeamSelect extends HTMLElement {
     // Define the allowed custom attributes
     static get observedAttributes() {
         return ["away"];
-    }
-
-    // Getter for away attribute
-    get away() {
-        return this.hasAttribute('away');
-    }
-
-    // Setter for the away attribute
-    set away(value) {
-        if(value) {
-            this.setAttribute('away', value);
-        }
-        else {
-            this.removeAttribute('away');
-        }
     }
 
     // Update the component when the away attribute is toggled
