@@ -74,12 +74,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -137,7 +139,7 @@ pub struct BoxScore {
 <p>Let's use the <code target="_blank">wact-team-select</code> component as our introductory example and proof-of-concept.&#160; This component is <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/main/static/js/wact-team-select.js" target="_blank">defined in wact-team-select.js</a>.&#160; The <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L1-L154" target="_blank">first thing I do to define my element</a> is I create a new template element in the DOM.&#160; As the template element's inner HTML, I add all the native HTML that composes my component together with a style tag with all the CSS needed to style the HTML.</p>
 <p>The <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L155-L168" target="_blank">next thing I do to define my element</a> is I define a new class which extends the HTMLElement base class.&#160; In the class constructor, I &#8203;attach and open &#8203;the &#8203;shadow &#8203;root, and I clone all of the aforementioned HTML and CSS content from my template into the shadow root.</p>
 <code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">const wactTeamSelect = document.createElement("template");
-wactTeamSelect.innerHTML = `...`
+wactTeamSelect.innerHTML = `...` // Your HTML and CSS goes here
 class WACTTeamSelect extends HTMLElement {
     constructor() {
         super();
