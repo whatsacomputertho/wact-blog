@@ -48,7 +48,31 @@ Options:
 }</template></code-sample>
 <p>Simple, short and sweet in its current form.&#160; But do not underestimate the power of command-line tools.&#160; Part of the reason I wrote this CLI was because I can envision potential future scenarios in which it may be useful to leverage in tandem with the web-based API and UI services.<br></p>
 <h3 data-original-level="H3" id="header-0fd23eae-f64f-be5d-21f1-0180d7939a04">Rust API<br></h3>
-<p>Brief overview of the fbsim API implementation<br></p>
+<p>The acronym API&#160;in the context of computer software stands for Application Programming Interface.&#160; It is a general term that can refer to a variety of implementations which enable two software applications to "talk to each other".&#160; Prepending the acronym REST (REpresentational State Transfer) refines the scope of the term API to mean, a networked server which responds to HTTP(S) requests <a href="https://www.redhat.com/en/topics/api/what-is-a-rest-api" target="_blank">according to specific architectural guidelines</a>.</p>
+<p>Across &#8203;the landscape of modern web development,&#160;REST APIs are extremely common and essential to most web-based and web-enabled applications.&#160; This is why I made the decision to develop a REST API for FBSim.&#160; From a forward-looking point of view, I knew that I would eventually develop a web-based user interface which would interact with the REST API, the REST API exposing the core application logic as an HTTP endpoint.</p>
+<p>I developed a single endpoint, <code>​/game/sim</code>, described below<br></p>
+<grid-plate disable-responsive layout="1-1-2"><p slot="col-1">Endpoint</p><code-sample type="json" copy-clipboard-button slot="col-1"><template preserve-content="preserve-content">POST /game/sim</template></code-sample>
+<p slot="col-2">Example Request<br slot="col-2"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
+  "home": {
+    "name": "string",
+    "offense_overall": 0,
+    "defense_overall": 0
+  },
+  "away": {
+    "name": "string",
+    "offense_overall": 0,
+    "defense_overall": 0
+  }
+}</template></code-sample>
+<p slot="col-3">Example Response<br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-3"><template preserve-content="preserve-content">{
+  "home_team": "string",
+  "home_score": 0,
+  "away_team": "string",
+  "away_score": 0
+}</template></code-sample>
+</grid-plate>
+<p>asdf</p>
+<p>asdf</p>
 <h3 data-original-level="H3" id="header-7f73e902-3073-9b9e-8158-852053ba8c87">Vanilla JS Web &#8203;Component UI<br></h3>
 <p>Brief overview of the fbsim UI implementation</p>
 <h2 data-original-level="H2" id="header-4d622995-9704-d957-3945-6ed78fe3ed7a">Deployment</h2>
