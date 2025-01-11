@@ -51,10 +51,10 @@ Options:
 <p>The acronym API&#160;in the context of computer software stands for Application Programming Interface.&#160; It is a general term that can refer to a variety of implementations which enable two software applications to "talk to each other".&#160; Prepending the acronym REST (REpresentational State Transfer) refines the scope of the term API to mean, a networked server which responds to HTTP(S) requests <a href="https://www.redhat.com/en/topics/api/what-is-a-rest-api" target="_blank">according to specific architectural guidelines</a>.</p>
 <p>Across &#8203;the landscape of modern web development,&#160;REST APIs are extremely common and essential to most web-based and web-enabled applications.&#160; This is why I made the decision to develop a REST API for FBSim.&#160; From a forward-looking point of view, I knew that I would eventually develop a web-based user interface which would interact with the REST API, the REST API exposing the core application logic as an HTTP endpoint.</p>
 <p>I developed a single endpoint, <code>POST /game/sim</code>, with example request &#38; response bodies given below<br></p>
-<grid-plate disable-responsive layout="1-1">
+<grid-plate disable-responsive layout="1-1" data-border="sm">
 
 
-<p slot="col-1">Example Request<br slot="col-2"></p><code-sample type="json" copy-clipboard-button slot="col-1"><template preserve-content="preserve-content">{
+<p slot="col-1"><b>Example Request</b><br slot="col-2"></p><code-sample type="json" copy-clipboard-button slot="col-1"><template preserve-content="preserve-content">{
   "home": {
     "name": "string",
     "offense_overall": 0,
@@ -67,12 +67,14 @@ Options:
   }
 }</template></code-sample>
 
-<p slot="col-2">Example Response<br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
+
+<p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 </grid-plate>
 <p>asdf</p>
