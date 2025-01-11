@@ -2,13 +2,7 @@
 <p>Understanding and modeling the real-world football data will only get us so far.&#160; Now we need to architect an application around our model.&#160; In this blog, I will walk through the architecture of the full-stack web application I developed around my football box score generator model.</p>
 <h2 data-original-level="H2" id="header-0a8b44dc-f7ec-9b8b-031b-f36901d07660">Architecture<br></h2>
 <p>The application consists of &#8203;the &#8203;following &#8203;components &#8203;at &#8203;a &#8203;high &#8203;level</p>
-<ul><li role="textbox">A ​Rust ​crate (<a href="https://github.com/whatsacomputertho/fbsim-core" target="_blank">fbsim-core</a>) containing the core structures and functions for running football simulations. ​ ​It ​is ​<a href="https://crates.io/crates/fbsim-core" target="_blank">published ​on ​crates.io</a>, ​with <a href="https://docs.rs/fbsim-core/1.0.0-alpha.3/fbsim_core/" target="_blank">​public documentation on doc.rs</a><br></li><li role="textbox">A ​Rust ​CLI ​(<a href="https://github.com/whatsacomputertho/fbsim-cli" target="_blank">fbsim-cli</a>) wrapping the core library and providing a quick and easy interface for running football simulations on the command-line</li><li role="textbox">A ​Rust ​​API ​(<a href="https://github.com/whatsacomputertho/fbsim-api" target="_blank">fbsim-api</a>) packaging the core library as a REST API and making it available to HTTP clients</li><li role="textbox">A ​vanilla web UI (<a href="https://github.com/whatsacomputertho/fbsim-ui" target="_blank">fbsim-ui</a>) composed of VanillaJS, W3C-standard web components which leverage the FBSim API as a back-end</li></ul>
-<p>In addition, the API and UI are containerized for deployment on a VM 
-using docker-compose, and for deployment on a Kubernetes-based container
- orchestration platform.&#160; CI was implemented for each containerized 
-service using GitHub actions, and the container images are stored on 
-GitHub's <a href="https://github.com/features/actions" target="_blank">ghcr.io</a> image registry.</p>
-<div><br></div>
+<ul><li role="textbox">A ​Rust ​crate (<a href="https://github.com/whatsacomputertho/fbsim-core" target="_blank">fbsim-core</a>) containing the core structures and functions for running football simulations. ​ ​It ​is ​<a href="https://crates.io/crates/fbsim-core" target="_blank">published ​on ​crates.io</a>, ​with <a href="https://docs.rs/fbsim-core/1.0.0-alpha.3/fbsim_core/" target="_blank">​public documentation on doc.rs</a><br></li><li role="textbox">A ​Rust ​CLI ​(<a href="https://github.com/whatsacomputertho/fbsim-cli" target="_blank">fbsim-cli</a>) wrapping the core library and providing a quick and easy interface for running football simulations on the command-line</li><li role="textbox">A ​Rust ​​API ​(<a href="https://github.com/whatsacomputertho/fbsim-api" target="_blank">fbsim-api</a>) packaging the core library as a REST API and making it available to HTTP clients</li><li role="textbox">A ​vanilla web UI (<a href="https://github.com/whatsacomputertho/fbsim-ui" target="_blank">fbsim-ui</a>) composed of VanillaJS, browser-standard web components which leverage the FBSim API as a back-end</li></ul>
 <media-image source="files/fbsim-architecture.png" card accent-color="grey" size="wide" offset="none" citation="FBSim architecture diagram"></media-image>
 <h2 data-original-level="H2" id="header-6e41b55e-79c9-107b-0a69-659da51fbe42">Implementation</h2>
 <p>The key technologies used for this initial implementation of FBSim, and the role they played in the implementation, will be discussed in the following sections.<br></p>
@@ -79,12 +73,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -195,7 +191,7 @@ class WACTTeamSelect extends HTMLElement {
   // ...(more code below)
 }</template></code-sample>
 <p>At &#8203;this &#8203;point, &#8203;we &#8203;have &#8203;a &#8203;minimally viable web component.&#160; There is a lot that can be done from here - one such approach was a total light bulb moment for me while developing the FBSim UI.&#160; I realized that the methods that are defined in the custom element class can actually be called after fetching the element from the DOM.&#160; This was a key piece of how I designed my components to interoperate with one another.<br></p>
-<p>To prove the concept, on the <code target="_blank">wact-team-select</code> element, <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L195-L205" target="_blank">I defined a getter method called team</a>.&#160; This takes the user input from the element's shadow root, and returns it as a structured JavaScript object (JSON).</p>
+<p>To prove the concept, on the <code target="_blank">wact-team-select</code> element, <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L195-L205" target="_blank">I defined a getter method called team</a>.&#160; This takes the user input from the element's shadow root, and returns it as a structured JavaScript object (JSON). &#8203; &#8203;You'll notice this JSON is in the exact same format as a <code>FootballTeam</code> serializes into and de-serializes from.<br></p>
 <code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">class WACTTeamSelect extends HTMLElement {
 // ...(more code above)
     // Get the team in JSON format
@@ -211,5 +207,25 @@ class WACTTeamSelect extends HTMLElement {
     }
 // ...(more code below)
 }</template></code-sample>
-<p>asdf</p>
-<p>asdf</p>
+<p>The &#8203;next-most abstract element is the <code target="_blank">wact-matchup-select</code> element.&#160; In its HTML template, it includes two instances of <code>wact-team-select</code>, one for the home team and another for the away team.&#160; On this element, <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-matchup-select.js#L43-L51" target="_blank">I defined a getter method called matchup</a>.&#160; This method uses the team getter method from each of its <code>wact-team-select</code> elements to return a JSON-serialized <code>FootballMatchup</code>.<br></p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">class WACTMatchupSelect extends HTMLElement {
+// ...(more code above)
+    // Get the matchup in JSON format
+    get matchup() {
+        const home = this.root.getElementById("matchup-select__home").team;
+        const away = this.root.getElementById("matchup-select__away").team;
+        return {
+            "home": home,
+            "away": away
+        }
+    }
+// ...(more code below)
+}</template></code-sample>
+<p>Now &#8203;finally &#8203;back &#8203;up &#8203;to &#8203;the &#8203;top-level <code>wact-game-sim</code> component.&#160; This element includes a <code>wact-matchup-select</code>, a button, and a <code>wact-box-score</code> (which is hidden by default).&#160; When its button is clicked, it reaches out to the FBSim API over HTTP to simulate the game between the two teams, then displays the result as a <code>wact-box-score</code> element.&#160; Now, all it really needs to do to construct its HTTP request to the FBSim API is call this matchup getter on its <code>wact-matchup select</code>!</p>
+<h2 id="header-14f91f9b-ffa4-3b52-a0cb-5b7c5fa28b53">Next &#8203;Steps</h2>
+<p>We now have an application composed of two web servers that interact with one another.&#160; The next (and final) step is really to figure out how we should go about deploying those web servers.&#160; In general, we want to be able to easily and reliably deploy the application both locally for testing, and in production (that is, on public internet-facing machines).<br></p>
+<p>In my next blog, <i>Football Box Score Generator Deployment</i>, I will cover how I containerized the API and UI for deployment on a VM 
+using docker-compose, and for deployment on a Kubernetes-based container
+ orchestration platform.&#160; I will further discuss the CI that I implemented for each containerized 
+service using GitHub actions, and how I went about storing the container images on 
+GitHub's <a href="https://github.com/features/actions" target="_blank">ghcr.io</a> image registry.</p>
