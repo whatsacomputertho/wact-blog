@@ -1,7 +1,7 @@
 {
-  "name": "{{ short }}",
-  "version": "{{ version }}",
-  "description": "{{ description }}",
+  "name": "whatsacomputertho-blog",
+  "version": "10.0.1",
+  "description": "Software engineer at IBM interested in mathematics. Studied IST & Mathematics at Penn State University Schreyer Honors College.",
   "main": "index.html",
   "author": {
     "name": "btopro"
@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "npm run dev",
+    "ghpages:build": "rm dist && rm assets/babel* && rm build && rm node_modules && rm wc-registry.json",
     "dev": "npx @haxtheweb/haxcms-nodejs",
     "dev-theme": "cd custom && npm start"
   }
