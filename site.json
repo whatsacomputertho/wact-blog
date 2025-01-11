@@ -23,12 +23,12 @@
         "gaID": null
       },
       "created": 1721491387,
-      "updated": 1734996114,
+      "updated": 1736614276,
       "git": {
         "vendor": "github",
         "branch": "gh-pages"
       },
-      "version": "9.0.0",
+      "version": "10.0.1",
       "domain": null,
       "tags": "Mathematics,Software,Engineering,Programming,Technology",
       "static": {}
@@ -40,7 +40,7 @@
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
         "image": "files/0f44322615eb1c8aa447a3339dcdfb80-profile.jpg",
-        "imageAlt": null,
+        "imageAlt": "whatsacomputertho",
         "imageLink": null,
         "hexCode": "#3f51b5",
         "cssVariable": "--simple-colors-default-theme-blue-7",
