@@ -240,10 +240,10 @@
       "order": 3,
       "parent": null,
       "title": "What's FootballSim, Though?",
-      "description": "Pet projects: as engineers we can all relate to the experience of having way too many of them, and the experience of having that one pet project",
+      "description": "The thing I find unique about software engineering is the diversity in background.  Everyone has a unique story to tell about how they became a software engineer.  This project is my story.",
       "metadata": {
         "created": 1734996130,
-        "updated": 1736097520,
+        "updated": 1736626234,
         "images": {},
         "videos": {},
         "files": [
@@ -261,7 +261,7 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Machine,Learning,ML,AI",
         "locked": false,
-        "readtime": 2
+        "readtime": 3
       }
     },
     {
