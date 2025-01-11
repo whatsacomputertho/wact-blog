@@ -78,12 +78,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -192,4 +194,22 @@ class WACTTeamSelect extends HTMLElement {
 
   // ...(more code below)
 }</template></code-sample>
-<p>sdf</p>
+<p>At &#8203;this &#8203;point, &#8203;we &#8203;have &#8203;a &#8203;minimally viable web component.&#160; There is a lot that can be done from here - one such approach was a total light bulb moment for me while developing the FBSim UI.&#160; I realized that the methods that are defined in the custom element class can actually be called after fetching the element from the DOM.&#160; This was a key piece of how I designed my components to interoperate with one another.<br></p>
+<p>To prove the concept, on the <code target="_blank">wact-team-select</code> element, <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/81720e841efc13190fb14a11af8976c72102b9b8/static/js/wact-team-select.js#L195-L205" target="_blank">I defined a getter method called team</a>.&#160; This takes the user input from the element's shadow root, and returns it as a structured JavaScript object (JSON).</p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">class WACTTeamSelect extends HTMLElement {
+// ...(more code above)
+    // Get the team in JSON format
+    get team() {
+        const name = this.root.getElementById("team-select__name-input").value;
+        const offenseOverall = parseInt(this.root.getElementById("team-select__offense-input").value);
+        const defenseOverall = parseInt(this.root.getElementById("team-select__defense-input").value);
+        return {
+            "name": name,
+            "offense_overall": offenseOverall,
+            "defense_overall": defenseOverall
+        }
+    }
+// ...(more code below)
+}</template></code-sample>
+<p>asdf</p>
+<p>asdf</p>
