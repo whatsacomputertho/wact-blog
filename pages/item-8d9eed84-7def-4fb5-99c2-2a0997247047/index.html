@@ -22,9 +22,43 @@ COPY --from=copyfiles /copyfiles/ /opt/fbsim-ui/
 WORKDIR /opt/fbsim-ui
 RUN npm install
 CMD ["npm", "run", "prod"]</template></code-sample>
-<p>asdf</p>
+<p>For the fbsim-api, the containerization process was slightly more complicated due to the fact that compiling an API built with the Rocket framework involves dynamic linking.&#160; To overcome this challenge I followed <a href="https://rocket.rs/guide/v0.5/deploying/#containerization" target="_blank">the official Rocket containerization guide</a> which uses GNU <code>objcopy</code> to combine all dynamically linked libraries together into the main API server executable.<br></p>
 <h3 data-original-level="H3" id="header-8d51747e-43ad-e4c2-c88b-90c4dc4c279a">GitHub Actions CI<br></h3>
-<p>Describe how GitHub Actions is used for building FBSim<br></p>
+<p>While the above Containerfiles can be built locally, it is more typical to develop a continuous integration (CI) process that regularly builds the application images when new code is contributed.&#160; GitHub Actions provides this mechanism directly built into the GitHub platform, and I found it to be very reliable and useful for containerized application development on public GitHub.</p>
+<p>GitHub Actions workflows are placed in the .github/workflows subdirectory of the repository.&#160; The workflows are defined by YAML specifications which defines properties of the workflow such as</p>
+<ol><li role="textbox">The ​steps ​of the workflow</li><li role="textbox">The ​script ​executed ​during ​each ​step ​of ​the ​workflow</li><li role="textbox">Which ​events ​trigger ​the ​workflow</li></ol>
+<p>and more.&#160; My workflows for the fbsim-ui and fbsim-api are very simple, they first extract the package version from the package manifest; this is later used to tag the image.&#160; They then build the image, and push the image into ghcr.io, GitHub's built-in container image registry.&#160; Below is the full GitHub actions workflow for the fbsim-api at the time of writing this blog.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">name: FBSim API build
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build and push the FBSim API image
+      run: |
+        # Get the package version from cargo.toml
+        echo "[INFO] Getting rust package version from cargo.toml"
+        RUST_PACKAGE_VERSION=$(
+          awk -F ' = ' '$1 ~ /version/ { gsub(/[\"]/, "", $2); printf("%s",$2) }' Cargo.toml
+        );
+        echo "[DEBU] Package version: ${RUST_PACKAGE_VERSION}"
+        
+        # Build the FBSim API image
+        echo "[INFO] Building and pushing ghcr.io/whatsacomputertho/fbsim-api:v${RUST_PACKAGE_VERSION}"
+        docker login \
+          -u whatsacomputertho \
+          -p ${{ secrets.GITHUB_TOKEN }} \
+          ghcr.io/whatsacomputertho
+        docker build . \
+          -f Containerfile \
+          --tag ghcr.io/whatsacomputertho/fbsim-api:v${RUST_PACKAGE_VERSION}
+        docker push \
+          ghcr.io/whatsacomputertho/fbsim-api:v${RUST_PACKAGE_VERSION}</template></code-sample>
+<p></p>
 <h3 data-original-level="H3" id="header-1e88bc0c-4aad-4d70-84da-b3aafd70090e">GitHub Container Registry<br></h3>
 <p>Describe how ghcr.io is used for storing the FBSim UI and API images<br></p>
 <h2 data-original-level="H2" id="header-2a0e0370-3025-9626-8d5c-143633e3c2cd">Deployment</h2>
