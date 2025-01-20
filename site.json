@@ -549,13 +549,13 @@
       "description": "\n",
       "metadata": {
         "created": 1736616782,
-        "updated": 1736623091,
+        "updated": 1737393281,
         "images": {},
         "videos": {},
         "published": true,
         "hideInMenu": false,
         "locked": false,
-        "readtime": 1,
+        "readtime": 2,
         "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604",
         "image": "files/wact-fbsim.png",
         "tags": "Football,Simulation,Docker,Kubernetes,CICD"

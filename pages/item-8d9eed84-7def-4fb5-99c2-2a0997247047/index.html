@@ -1,8 +1,28 @@
 
+<p>With &#8203;our &#8203;model &#8203;trained and application written, our final task will be to deploy our application.&#160; As with the rest of the project, I wanted to approach this phase of the deployment with both simplicity and long-term scalability in mind.&#160; The deployment process should be semi-automated and repeatable both locally and on remote machines.&#160; It should be possible to deploy the FBSim application on a generic linux VM, and on a Kubernetes cluster.</p>
+<p>As such, the obvious choice would be to containerize the FBSim application, and to develop both a docker-compose-based deployment, and a Kubernetes-based deployment.&#160; To support these deployments and satisfy the "semi-automated" requirement, I would need to develop CI to regularly build my container images.<br></p>
 <h2 data-original-level="H2" id="header-694c2fe0-5c44-9ccd-289a-c76a9f6452f7">Continuous &#8203;Integration</h2>
-<p>Briefly describe the importance of CI for FBSim</p>
+<p>I developed CI applied to both the fbsim-ui and fbsim-api repositories.&#160; Across both repositories, the CI followed a very similar pattern.</p>
+<ol><li role="textbox">Write a Containerfile that builds ​the ​application ​and/or copies the application into the image<br></li><li role="textbox">Write a GitHub actions workflow that runs the containerized build and pushes the built image to ghcr.io</li><li role="textbox">Use the repository's package manifest (cargo.toml, package.json) to version &amp; tag the images in ghcr.io<br></li></ol>
 <h3 data-original-level="H3" id="header-afd4f595-af5a-075b-ff0e-499c87048aed">Containerization<br></h3>
-<p>Describe how the UI and API of FBSim were containerized<br></p>
+<p>For the fbsim-ui, the containerization process was quite simple.&#160; Since JavaScript is an interpreted language, I would just need to make sure that I use a base image with NodeJS built in, then copy my source code and static content directly into the image in its expected directory structure.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content"># Copy files into builder image for single-layer copy into main image
+FROM scratch AS copyfiles
+COPY src/*.js /copyfiles/src/
+COPY static/css/*.css /copyfiles/static/css/
+COPY static/img/*.png /copyfiles/static/img/
+COPY static/img/*.jpg /copyfiles/static/img/
+COPY static/js/*.js /copyfiles/static/js/
+COPY static/views/*.hbs /copyfiles/static/views/
+COPY package.json package-lock.json LICENSE /copyfiles/
+
+# Main image build
+FROM node:20-bookworm
+COPY --from=copyfiles /copyfiles/ /opt/fbsim-ui/
+WORKDIR /opt/fbsim-ui
+RUN npm install
+CMD ["npm", "run", "prod"]</template></code-sample>
+<p>asdf</p>
 <h3 data-original-level="H3" id="header-8d51747e-43ad-e4c2-c88b-90c4dc4c279a">GitHub Actions CI<br></h3>
 <p>Describe how GitHub Actions is used for building FBSim<br></p>
 <h3 data-original-level="H3" id="header-1e88bc0c-4aad-4d70-84da-b3aafd70090e">GitHub Container Registry<br></h3>
