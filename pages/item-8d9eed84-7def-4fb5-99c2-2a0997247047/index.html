@@ -58,9 +58,9 @@ jobs:
           --tag ghcr.io/whatsacomputertho/fbsim-api:v${RUST_PACKAGE_VERSION}
         docker push \
           ghcr.io/whatsacomputertho/fbsim-api:v${RUST_PACKAGE_VERSION}</template></code-sample>
-<p></p>
 <h3 data-original-level="H3" id="header-1e88bc0c-4aad-4d70-84da-b3aafd70090e">GitHub Container Registry<br></h3>
-<p>Describe how ghcr.io is used for storing the FBSim UI and API images<br></p>
+<p>The GitHub container image registry, ghcr.io (also sometimes called "GitHub Packages") is used in the above example to publish the images built in my GitHub Actions workflows.&#160; In order to publish the images, a GitHub token with the proper permissions must be used.&#160; Conveniently, GitHub actions automatically generates a short-lived token on each run that can be used to publish my images, as seen above when I reference <code>${{ secrets.GITHUB_TOKEN }}</code>.</p>
+<p>The &#8203;GitHub &#8203;container &#8203;image &#8203;registry &#8203;is &#8203;publicly &#8203;readable, &#8203;meaning &#8203;that &#8203;anyone &#8203;can pull the container images built and published by my workflows.&#160; So you, reading this at home, can deploy FBSim using the exact same image references as I use for my deployment - we will both pull the images from ghcr.io.<br></p>
 <h2 data-original-level="H2" id="header-2a0e0370-3025-9626-8d5c-143633e3c2cd">Deployment</h2>
 <p>Briefly describe the requirements for deploying FBSim</p>
 <h3 data-original-level="H3" id="header-19182742-e79f-92da-38d3-4255fdad79c0">&#8203;Compose</h3>
