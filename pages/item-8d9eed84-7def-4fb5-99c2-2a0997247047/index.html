@@ -280,6 +280,15 @@ spec:
                 port:
                   number: 8081</template></code-sample>
 <p>You might notice that there is an annotation in the above Ingress referring to traefik router middleware.&#160; This refers to another custom resource I created, Middleware, which is another pre-installed custom resource definition offered by traefik.&#160; My traefik Middleware simply redirects HTTP traffic to HTTPS, much like what I had configured in my NGINX reverse proxy in the docker compose deployment.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "fbsim-redirect-https"
+  namespace: "fbsim"
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true</template></code-sample>
 <p>But &#8203;wait, if we're redirecting HTTP traffic to HTTPS, then &#8203;how &#8203;do we enable HTTPS / TLS on our Ingress?&#160; We hadn't done anything special to enable that yet.&#160; So in comes Cert Manager - which is another open source extension of Kubernetes (this time it does not come pre-installed on K3s) which basically automates that whole certificate signing dance from our docker compose deployment.</p>
 <p>We &#8203;will &#8203;first &#8203;need &#8203;to &#8203;install &#8203;the &#8203;Cert &#8203;Manager custom resource definitions (CRDs) since they aren't pre-installed on K3s.</p>
 <code-sample type="html" copy-clipboard-button><template preserve-content="preserve-content">kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/1.16.3/cert-manager.crds.yaml</template></code-sample>
