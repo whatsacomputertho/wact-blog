@@ -310,7 +310,7 @@ spec:
     - http01:
         ingress:
           class: traefik</template></code-sample>
-<p>Then &#8203;finally, &#8203;to &#8203;equip &#8203;our &#8203;Ingress &#8203;with &#8203;a &#8203;signed &#8203;certificate from Cert Manager, we just need to update it like so.&#160; Here we add an annotation to our Ingress pointing at our Issuer, which will initiate a certificate signing request in Cert Manager.&#160; Then we also add a TLS configuration section which defines the Kubernetes Secret where the certificate will be stored.</p>
+<p>Then &#8203;finally, &#8203;to &#8203;equip &#8203;our &#8203;Ingress &#8203;with &#8203;a &#8203;signed &#8203;certificate from Cert Manager, we just need to update it like so.&#160; Here we add an annotation to our Ingress pointing at our Issuer, which will initiate a certificate signing request in Cert Manager.&#160; Then we also add a TLS configuration section which defines the Kubernetes Secret where the certificate will be stored and the domain name for which the certificate is being granted.</p>
 <code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
