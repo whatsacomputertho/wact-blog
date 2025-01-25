@@ -199,8 +199,8 @@ metadata:
     name: "fbsim"</template></code-sample>
 <p>Next &#8203;up &#8203;is &#8203;our &#8203;Deployment &#8203;resource. &#8203; &#8203;A &#8203;Kubernetes &#8203;Deployment &#8203;is generally used for stateless services, that is, services which do not store and track data over time.&#160; Ours simply respond to HTTP requests and that is all.&#160; A Deployment will manage a resource called a ReplicaSet, which itself will manage resources called Pods.</p>
 <p>Pods are comparable to our docker compose file in that they define the containers to deploy, the ports behind which to expose them, the environment variables and volumes they mount, and more.&#160; ReplicaSets then create multiple duplicates of Pods and load balance traffic coming into the Pods.</p>
-<p>Deployments finally tie this all together by allowing us to scale up and down the size of our ReplicaSet.&#160; Maybe one day we want 3 replicas of our service, but then another day we want 2.&#160; It is also worth noting that Deployments can be amended with what is called an AutoScaler, which can automatically scale up and down the size of the deployment based on things like CPU usage, or network traffic.&#8203; &#8203; &#8203;In my case, I kept it as simple as possible and simply deployed one replica of my FBSim Pod.</p>
-<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: apps/v1
+<p>Deployments finally tie this all together by allowing us to scale up and down the size of our ReplicaSet.&#160; Maybe one day we want 3 replicas of our service, but then another day we want 2.&#160; It is also worth noting that Deployments can be amended with what is called an AutoScaler, which can automatically scale up and down the deployed replicas based on things like CPU usage, or network traffic.&#8203; &#8203; &#8203;In my case, I kept it as simple as possible and simply deployed one replica of my FBSim Pod.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "fbsim"
@@ -235,4 +235,99 @@ spec:
           ports:
             - containerPort: 8080
               name: fbsim-api</template></code-sample>
-<p>asdf</p>
+<p>I &#8203;then &#8203;mapped &#8203;a &#8203;Service resource to my Deployment, which exposes the Deployment to the cluster's network.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: v1
+kind: Service
+metadata:
+  name: "fbsim"
+  namespace: "fbsim"
+  labels:
+    app.kubernetes.io/name: "fbsim"
+spec:
+  selector:
+    app.kubernetes.io/name: "fbsim"
+  ports:
+    - name: fbsim-ui
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+    - name: fbsim-api
+      protocol: TCP
+      port: 8080
+      targetPort: 8080</template></code-sample>
+<p>At this point my Deployment still is not publicly accessible.&#160; We will need to use our first custom resource, called an Ingress, to make our Deployment publicly accessible.&#160; The Ingress-Nginx controller and its custom resource definitions come pre-installed on K3s, so we do not need to do anything special to create these custom resources on our K3s cluster.</p>
+<p>I created two Ingresses, one for the UI and another for the API.&#160; Ultimately, these ingresses do roughly the same thing as our reverse proxy did in our docker compose deployment, plus some additional networking tasks, such as creating DNS entries for our services.&#8203; &#8203; &#8203;Below I'll include the UI ingress as an example.<br></p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "fbsim-ui-tls-ingress"
+  namespace: "fbsim"
+  labels:
+    app.kubernetes.io/name: "fbsim-ui-tls-ingress"
+  annotations:
+    spec.ingressClassName: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: "fbsim-fbsim-redirect-https@kubernetescrd"
+spec:
+  rules:
+    - host: "fbsim.whatsacomputertho.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "fbsim"
+                port:
+                  number: 8081</template></code-sample>
+<p>You might notice that there is an annotation in the above Ingress referring to traefik router middleware.&#160; This refers to another custom resource I created, Middleware, which is another pre-installed custom resource definition offered by traefik.&#160; My traefik Middleware simply redirects HTTP traffic to HTTPS, much like what I had configured in my NGINX reverse proxy in the docker compose deployment.</p>
+<p>But &#8203;wait, if we're redirecting HTTP traffic to HTTPS, then &#8203;how &#8203;do we enable HTTPS / TLS on our Ingress?&#160; We hadn't done anything special to enable that yet.&#160; So in comes Cert Manager - which is another open source extension of Kubernetes (this time it does not come pre-installed on K3s) which basically automates that whole certificate signing dance from our docker compose deployment.</p>
+<p>We &#8203;will &#8203;first &#8203;need &#8203;to &#8203;install &#8203;the &#8203;Cert &#8203;Manager custom resource definitions (CRDs) since they aren't pre-installed on K3s.</p>
+<code-sample type="html" copy-clipboard-button><template preserve-content="preserve-content">kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/1.16.3/cert-manager.crds.yaml</template></code-sample>
+<p>Then &#8203;we &#8203;can &#8203;create an Issuer custom resource.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: "fbsim-letsencrypt-prod"
+  namespace: "fbsim"
+  labels:
+    app.kubernetes.io/name: "fbsim-letsencrypt-prod"
+spec:
+  acme:
+    email: "my@email.com"
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: "fbsim-letsencrypt-prod"
+    solvers:
+    - http01:
+        ingress:
+          class: traefik</template></code-sample>
+<p>Then &#8203;finally, &#8203;to &#8203;equip &#8203;our &#8203;Ingress &#8203;with &#8203;a &#8203;signed &#8203;certificate from Cert Manager, we just need to update it like so.&#160; Here we add an annotation to our Ingress pointing at our Issuer, which will initiate a certificate signing request in Cert Manager.&#160; Then we also add a TLS configuration section which defines the Kubernetes Secret where the certificate will be stored.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "fbsim-ui-tls-ingress"
+  namespace: "fbsim"
+  labels:
+    app.kubernetes.io/name: "fbsim-ui-tls-ingress"
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/issuer: "fbsim-letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.middlewares: "fbsim-fbsim-redirect-https@kubernetescrd"
+spec:
+  rules:
+    - host: "fbsim.whatsacomputertho.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "fbsim"
+                port:
+                  number: 8081
+  tls:
+    - secretName: "fbsim-ui-tls"
+      hosts:
+        - "fbsim.whatsacomputertho.com"</template></code-sample>
+<p>&#8203;I &#8203;haven't &#8203;quite &#8203;explained &#8203;how &#8203;we &#8203;go &#8203;about &#8203;creating all these resources on our K3s cluster.&#160; We can, from one of our VMs running K3s, run <code>kubectl create -f [manifest-file]</code> to freshly create each of our resources from their respective manifest files, or <code>kubectl apply -f [manifest-file]</code> if we want to update any of our resources.&#160; That said, in my case, I created something called a Helm chart, which allows us to template our resources in different ways and install our entire application at once as a package.</p>
+<p>You &#8203;can &#8203;find <a href="https://github.com/whatsacomputertho/fbsim-deploy/tree/main/deploy/k8s" target="_blank">​my ​helm ​chart here</a>, and <a href="https://github.com/whatsacomputertho/fbsim-deploy/blob/main/deploy/k8s/README.md" target="_blank">full instructions for deploying the helm chart here</a>.<br></p>
