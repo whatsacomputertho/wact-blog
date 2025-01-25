@@ -197,4 +197,42 @@ metadata:
   name: "fbsim"
   labels:
     name: "fbsim"</template></code-sample>
-<p></p>
+<p>Next &#8203;up &#8203;is &#8203;our &#8203;Deployment &#8203;resource. &#8203; &#8203;A &#8203;Kubernetes &#8203;Deployment &#8203;is generally used for stateless services, that is, services which do not store and track data over time.&#160; Ours simply respond to HTTP requests and that is all.&#160; A Deployment will manage a resource called a ReplicaSet, which itself will manage resources called Pods.</p>
+<p>Pods are comparable to our docker compose file in that they define the containers to deploy, the ports behind which to expose them, the environment variables and volumes they mount, and more.&#160; ReplicaSets then create multiple duplicates of Pods and load balance traffic coming into the Pods.</p>
+<p>Deployments finally tie this all together by allowing us to scale up and down the size of our ReplicaSet.&#160; Maybe one day we want 3 replicas of our service, but then another day we want 2.&#160; It is also worth noting that Deployments can be amended with what is called an AutoScaler, which can automatically scale up and down the size of the deployment based on things like CPU usage, or network traffic.&#8203; &#8203; &#8203;In my case, I kept it as simple as possible and simply deployed one replica of my FBSim Pod.</p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "fbsim"
+  namespace: "fbsim"
+  labels:
+    app.kubernetes.io/name: "fbsim"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "fbsim"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: "fbsim"
+    spec:
+      containers:
+        - name: fbsim-ui
+          image: "ghcr.io/whatsacomputertho/fbsim-ui:v1.0.0-alpha.1"
+          env:
+            - name: FBSIM_UI_DOMAIN
+              value: "0.0.0.0"
+            - name: FBSIM_UI_PORT
+              value: "8081"
+            - name: FBSIM_API_HOST
+              value: "https://api.fbsim.whatsacomputertho.com"
+          ports:
+            - containerPort: 8081
+              name: fbsim-ui
+        - name: fbsim-api
+          image: "ghcr.io/whatsacomputertho/fbsim-api:v1.0.0-alpha.1"
+          ports:
+            - containerPort: 8080
+              name: fbsim-api</template></code-sample>
+<p>asdf</p>
