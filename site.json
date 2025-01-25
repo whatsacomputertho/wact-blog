@@ -243,7 +243,7 @@
       "description": "The thing I find unique about software engineering is the diversity in background.  Everyone has a unique story to tell about how they became a software engineer.  This project is my story.",
       "metadata": {
         "created": 1734996130,
-        "updated": 1736626234,
+        "updated": 1737825439,
         "images": {},
         "videos": {},
         "files": [
@@ -261,7 +261,8 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Machine,Learning,ML,AI",
         "locked": false,
-        "readtime": 3
+        "readtime": 3,
+        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047"
       }
     },
     {
@@ -299,12 +300,12 @@
       "description": "To model a game as complex as American football requires a deep understanding of real-world football data.",
       "metadata": {
         "created": 1736114267,
-        "updated": 1736257312,
+        "updated": 1737825474,
         "images": {},
         "videos": {},
         "published": true,
         "hideInMenu": false,
-        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-23e2afc5-3e91-4a94-b396-9ab780bf4604",
+        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047",
         "image": "files/wact-fbsim.png",
         "tags": "football,simulation,machine,learning,data,science",
         "locked": false,
