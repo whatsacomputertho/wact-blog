@@ -24,10 +24,10 @@ RUN npm install
 CMD ["npm", "run", "prod"]</template></code-sample>
 <p>For the fbsim-api, the containerization process was slightly more complicated due to the fact that compiling an API built with the Rocket framework involves dynamic linking.&#160; To overcome this challenge I followed <a href="https://rocket.rs/guide/v0.5/deploying/#containerization" target="_blank">the official Rocket containerization guide</a> which uses GNU <code>objcopy</code> to combine all dynamically linked libraries together into the main API server executable.<br></p>
 <h3 data-original-level="H3" id="header-8d51747e-43ad-e4c2-c88b-90c4dc4c279a">GitHub Actions CI<br></h3>
-<p>While the above Containerfiles can be built locally, it is more typical to develop a continuous integration (CI) process that regularly builds the application images when new code is contributed.&#160; GitHub Actions provides this mechanism directly built into the GitHub platform, and I found it to be very reliable and useful for containerized application development on public GitHub.</p>
-<p>GitHub Actions workflows are placed in the .github/workflows subdirectory of the repository.&#160; The workflows are defined by YAML specifications which defines properties of the workflow such as</p>
+<p>While the above Containerfiles can be built locally, it is more typical to develop a <a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank">continuous integration (CI)</a> process that regularly builds the application images when new code is contributed.&#160; <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a> provides this mechanism directly built into the GitHub platform, and I found it to be very reliable and useful for containerized application development on public GitHub.</p>
+<p>GitHub Actions workflows are placed in <a href="https://github.com/whatsacomputertho/fbsim-api/tree/main/.github/workflows" target="_blank">the .github/workflows subdirectory</a> of the repository.&#160; The workflows are defined by YAML specifications which defines properties of the workflow such as</p>
 <ol><li role="textbox">The ​steps ​of the workflow</li><li role="textbox">The ​script ​executed ​during ​each ​step ​of ​the ​workflow</li><li role="textbox">Which ​events ​trigger ​the ​workflow</li></ol>
-<p>and more.&#160; My workflows for the fbsim-ui and fbsim-api are very simple, they first extract the package version from the package manifest; this is later used to tag the image.&#160; They then build the image, and push the image into ghcr.io, GitHub's built-in container image registry.&#160; Below is the full GitHub actions workflow for the fbsim-api at the time of writing this blog.</p>
+<p>and more.&#160; My workflows for the <a href="https://github.com/whatsacomputertho/fbsim-ui/blob/main/.github/workflows/image-build.yaml" target="_blank">fbsim-ui</a> and <a href="https://github.com/whatsacomputertho/fbsim-api/blob/main/.github/workflows/image-build.yaml" target="_blank">fbsim-api</a> are very simple, they first extract the package version from the package manifest; this is later used to tag the image.&#160; They then build the image, and push the image into ghcr.io, GitHub's built-in container image registry.&#160; Below is the full GitHub actions workflow for the fbsim-api at the time of writing this blog.</p>
 <code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">name: FBSim API build
 on:
   push:
@@ -62,8 +62,127 @@ jobs:
 <p>The GitHub container image registry, ghcr.io (also sometimes called "GitHub Packages") is used in the above example to publish the images built in my GitHub Actions workflows.&#160; In order to publish the images, a GitHub token with the proper permissions must be used.&#160; Conveniently, GitHub actions automatically generates a short-lived token on each run that can be used to publish my images, as seen above when I reference <code>${{ secrets.GITHUB_TOKEN }}</code>.</p>
 <p>The &#8203;GitHub &#8203;container &#8203;image &#8203;registry &#8203;is &#8203;publicly &#8203;readable, &#8203;meaning &#8203;that &#8203;anyone &#8203;can pull the container images built and published by my workflows.&#160; So you, reading this at home, can deploy FBSim using the exact same image references as I use for my deployment - we will both pull the images from ghcr.io.<br></p>
 <h2 data-original-level="H2" id="header-2a0e0370-3025-9626-8d5c-143633e3c2cd">Deployment</h2>
-<p>Briefly describe the requirements for deploying FBSim</p>
+<p>Now comes the main task of actually deploying the FBSim application.&#160; I started with the simplest task of deploying FBSim on my local machine using docker compose.&#160; Then later, I worked through the task of deploying FBSim publicly on an AWS VM using docker compose.&#160; Finally, I worked through the same exercise of deploying FBSim publicly, but this time on a single-node K3s cluster also hosted on an AWS VM.<br></p>
 <h3 data-original-level="H3" id="header-19182742-e79f-92da-38d3-4255fdad79c0">&#8203;Compose</h3>
-<p>Describe &#8203;the &#8203;docker &#8203;compose &#8203;deployment &#8203;process for FBSim<br></p>
+<p><a href="https://github.com/whatsacomputertho/fbsim-deploy/blob/main/deploy/compose/local/docker-compose.yaml" target="_blank">The local docker compose deployment</a> was the easiest exercise, it simply involved coordinating the port numbers of the two applications.&#160; The UI is equipped with an environment variable which it uses to determine where to send its API requests, and so the main exercise was setting this environment variable so that it matched the port number behind which the API was exposed on my local host.</p>
+<code-sample type="yaml" copy-clipboard-button><template preserve-content="preserve-content">services:
+  api:
+    image: ghcr.io/whatsacomputertho/fbsim-api:${FBSIM_API_VERSION:-v1.0.0-alpha.1}
+    ports:
+      - "8080:8080"
+  ui:
+    image: ghcr.io/whatsacomputertho/fbsim-ui:${FBSIM_UI_VERSION:-v1.0.0-alpha.1}
+    ports:
+      - "8081:8081"
+    environment:
+      - FBSIM_UI_DOMAIN=0.0.0.0
+      - FBSIM_UI_PORT=8081
+      - FBSIM_API_HOST=http://localhost:8080</template></code-sample>
+<p>This would then serve as a building block toward <a href="https://github.com/whatsacomputertho/fbsim-deploy/blob/main/deploy/compose/prod/README.md" target="_blank">the "production" docker compose deployment</a>.&#160; That said, the &#8203;"production" docker compose deployment would be a bit trickier.&#160; The main challenge in this case would be <a href="https://en.wikipedia.org/wiki/Public_key_certificate" target="_blank">the acquisition of a TLS certificate which is signed by a valid certification authority</a>.&#160; This is a must-have for secure communication between the UI and API server; without it most browsers would flag my site as "potentially malicious".</p>
+<p>To overcome this challenge I used a free set of tools called <a href="https://certbot.eff.org/" target="_blank">Certbot</a> and <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a>.  Let's Encrypt is hosted by the <a href="https://www.abetterinternet.org/" target="_blank">Internet Security Research Group (ISRG)</a>, and offers a free and automated solution for acquiring signed TLS certificates signed by the ISRG's CA.  Certbot is a containerized utility which we will issue the certificate signing request against our domain.</p>
+<p>Once the certificate signing request is issued, we must have a server running which can successfully respond to an <a href="https://letsencrypt.org/docs/challenge-types/#http-01-challenge" target="_blank">Automatic Certificate Management Environment (ACME)</a> challenge.&#160; Once it does, Certbot will store the granted certificates within a volume on the host.&#160; We will configure a containerized NGINX web server to respond to the request for us.&#8203;</p>
+<p>Here is <a href="https://github.com/whatsacomputertho/fbsim-deploy/blob/main/build/acme-responder/nginx.conf" target="_blank">the NGINX configuration</a> for <a href="https://github.com/whatsacomputertho/fbsim-deploy/tree/main/build/acme-responder" target="_blank">the ACME challenge responder</a>.&#160; You'll notice that my domain is hardcoded in the configuration - this is something that I'd like to read in from an environment variable in the future so that others can more easily reproduce this deployment themselves.<br></p>
+<code-sample type="json" copy-clipboard-button><template preserve-content="preserve-content">events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 80;
+        server_name whatsacomputertho.com;
+        resolver 127.0.0.11;
+
+        location /.well-known/acme-challenge/ {
+                root /var/www/certbot;
+        }
+    }
+}</template></code-sample>
+<p>This NGINX server will simply respond to requests to the <code>/.well-known/acme-challenge/&lt;TOKEN&gt;</code> path by placing the given token into a file in <code>/var/www/certbot</code>. &#8203; &#8203;We &#8203;will &#8203;run &#8203;the server and the certbot container such that they both mount the same host volume <code>./data/certbot/www</code> into <code>/var/www/certbot</code>.&#160; This means that when the above NGINX server writes its token into <code>/var/www/certbot</code>, it will be written to <code>./data/certbot/www</code> on the host machine, and then Certbot will be able to read it from that same location.</p>
+<p>Certbot will then mount an additional host volume <code>./data/certbot/conf</code> into <code>/etc/letsencrypt</code> which is where it will write the signed certificate, and where later we will mount the certificate.&#160; A demonstration of how the certificate signing request is completed against my domain is given below.&#8203;</p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content"># Run the acme-responder container
+docker run -d -it -p 80:80 --volume ./data/certbot/www:/var/www/certbot ghcr.io/whatsacomputertho/fbsim-acme-responder:v1.0.0-alpha.1
+
+# Run the certbot container in dry run mode
+# Select option 2
+#     2: Saves the necessary validation files to a .well-known/acme-challenge/
+#        directory within the nominated webroot path. A separate HTTP server must be
+#        running and serving files from the webroot path. HTTP challenge only (wildcards
+#        not supported). (webroot)
+docker run -it --volume ./data/certbot/www:/var/www/certbot --volume ./data/certbot/conf:/etc/letsencrypt certbot/certbot certonly -d whatsacomputertho.com --webroot-path /var/www/certbot --dry-run</template></code-sample>
+<p>Once we have the certificates, we can deploy our application.&#160; In order to do so, we will <a href="https://github.com/whatsacomputertho/fbsim-deploy/blob/main/build/proxy/nginx.conf" target="_blank">configure another containerized NGINX web server</a> which will serve as <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">a "reverse proxy"</a>.&#160; All traffic into the application will be pointed at this web server.&#160; The server will mount our TLS certificates and apply TLS encryption, and then simply route all traffic through itself to the UI and API servers.<br></p>
+<code-sample type="json" copy-clipboard-button><template preserve-content="preserve-content">events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 443 ssl;
+        ssl_certificate /etc/letsencrypt/live/whatsacomputertho.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/whatsacomputertho.com/privkey.pem;
+        include /etc/letsencrypt/options-ssl-nginx.conf;
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+        server_name whatsacomputertho.com;
+        resolver 127.0.0.11;
+
+        location /.well-known/acme-challenge/ {
+                root /var/www/certbot;
+        }
+        location = / {
+                set $upstream ui:8081;
+                proxy_pass http://$upstream/;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+        location = /game/sim {
+                set $upstream api:8080;
+                proxy_pass http://$upstream/game/sim;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+        location ~ ^/js/(.*)$ {
+                set $upstream ui:8081;
+                proxy_pass http://$upstream/js/$1;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+        location ~ ^/img/(.*)$ {
+                set $upstream ui:8081;
+                proxy_pass http://$upstream/img/$1;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+        location ~ ^/css/(.*)$ {
+                set $upstream ui:8081;
+                proxy_pass http://$upstream/css/$1;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+    }
+
+    server {
+        listen 80;
+        server_name whatsacomputertho.com;
+        return 302 https://$server_name$request_uri;
+    }
+}</template></code-sample>
+<p>Here is another scenario where my domain is hardcoded into the NGINX configuration, but in the future I would like to parameterize it so that others can repeat this docker-compose-based deployment.</p>
+<p>As &#8203;you &#8203;may &#8203;have &#8203;guessed, <a href="https://github.com/whatsacomputertho/fbsim-deploy/tree/main/build/proxy" target="_blank">this NGINX reverse proxy is also containerized</a>, and mounts the <code>./data/cetbot/conf</code>&#160;host directory (which is where Certbot wrote our certificates and configuration) into <code>/etc/letsencrypt</code>.&#160; Also you may notice that throughout the NGINX configuration, I use an alias for my UI and API servers.&#160; This is possible because, when spinning up a docker-compose deployment, <a href="https://docs.docker.com/compose/how-tos/networking/" target="_blank">docker-compose sets up a virtual network</a> mapping our service names to their local IPs.</p>
+<p>Here &#8203;is &#8203;my &#8203;final &#8203;<code>docker-compose.yaml</code>:</p>
+<code-sample type="javascript" copy-clipboard-button><template preserve-content="preserve-content">services:
+  proxy:
+    image: ghcr.io/whatsacomputertho/fbsim-proxy:${FBSIM_PROXY_VERSION:-v1.0.0-alpha.1}
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+  api:
+    image: ghcr.io/whatsacomputertho/fbsim-api:${FBSIM_API_VERSION:-v1.0.0-alpha.1}
+    ports:
+      - "8080:8080"
+  ui:
+    image: ghcr.io/whatsacomputertho/fbsim-ui:${FBSIM_UI_VERSION:-v1.0.0-alpha.1}
+    ports:
+      - "8081:8081"
+    environment:
+      - FBSIM_UI_DOMAIN=0.0.0.0
+      - FBSIM_UI_PORT=8081
+      - FBSIM_API_HOST=${FBSIM_HOST:-https://whatsacomputertho.com}</template></code-sample>
+<p>All &#8203;that is needed to spin up our services at this point is simply run a <code>docker compose up -d</code>from the directory in which this <code>docker-compose.yaml</code> is located, and our services will spin up with TLS encryption enabled.<br></p>
 <h3 data-original-level="H3" id="header-0dcd74b5-ca39-679e-33f0-e8703788b862">Kubernetes<br></h3>
 <p>Describe the Kubernetes deployment process for FBSim<br></p>
