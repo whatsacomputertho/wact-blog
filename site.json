@@ -567,13 +567,13 @@
       "indent": 0,
       "location": "pages/item-3069036a-2ec7-4276-a1d9-c9a3131b8265/index.html",
       "slug": "fbsim-mvp/next-steps",
-      "order": 2,
+      "order": 3,
       "parent": "item-1ba2d0da-b384-4dc1-ac72-45fd43f8ffb1",
       "title": "Next Steps for FootballSim",
       "description": "What's next for FootballSim now that the MVP is complete?",
       "metadata": {
         "created": 1738516272,
-        "updated": 1738516418,
+        "updated": 1738520616,
         "images": {},
         "videos": {},
         "published": true,
@@ -582,7 +582,7 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Simulation,Roadmap,Next,Steps",
         "locked": false,
-        "readtime": 1,
+        "readtime": 4,
         "files": [
           {
             "path": "C:\\Users\\ebalc\\Desktop\\wact-blog\\files\\game-sim-mid-fi.png",
