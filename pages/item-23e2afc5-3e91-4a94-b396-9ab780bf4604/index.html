@@ -74,12 +74,14 @@ Options:
 
 
 
+
 <p slot="col-2"><b>Example Response</b><br slot="col-3"></p><code-sample type="json" copy-clipboard-button slot="col-2"><template preserve-content="preserve-content">{
   "home_team": "string",
   "home_score": 0,
   "away_team": "string",
   "away_score": 0
 }</template></code-sample>
+
 
 
 
@@ -222,7 +224,7 @@ class WACTTeamSelect extends HTMLElement {
 // ...(more code below)
 }</template></code-sample>
 <p>Now &#8203;finally &#8203;back &#8203;up &#8203;to &#8203;the &#8203;top-level <code>wact-game-sim</code> component.&#160; This element includes a <code>wact-matchup-select</code>, a button, and a <code>wact-box-score</code> (which is hidden by default).&#160; When its button is clicked, it reaches out to the FBSim API over HTTP to simulate the game between the two teams, then displays the result as a <code>wact-box-score</code> element.&#160; Now, all it really needs to do to construct its HTTP request to the FBSim API is call this matchup getter on its <code>wact-matchup select</code>!</p>
-<h2 id="header-14f91f9b-ffa4-3b52-a0cb-5b7c5fa28b53">Next &#8203;Steps</h2>
+<h2 data-original-level="H2" id="header-14f91f9b-ffa4-3b52-a0cb-5b7c5fa28b53">Next &#8203;Steps</h2>
 <p>We now have an application composed of two web servers that interact with one another.&#160; The next (and final) step is really to figure out how we should go about deploying those web servers.&#160; In general, we want to be able to easily and reliably deploy the application both locally for testing, and in production (that is, on public internet-facing machines).<br></p>
 <p>In my next blog, <i>Football Box Score Generator Deployment</i>, I will cover how I containerized the API and UI for deployment on a VM 
 using docker-compose, and for deployment on a Kubernetes-based container
