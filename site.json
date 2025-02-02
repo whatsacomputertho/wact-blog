@@ -243,7 +243,7 @@
       "description": "The thing I find unique about software engineering is the diversity in background.  Everyone has a unique story to tell about how they became a software engineer.  This project is my story.",
       "metadata": {
         "created": 1734996130,
-        "updated": 1738520856,
+        "updated": 1738520951,
         "images": {},
         "videos": {},
         "files": [
@@ -262,7 +262,7 @@
         "tags": "Football,Machine,Learning,ML,AI",
         "locked": false,
         "readtime": 3,
-        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047"
+        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047,item-3069036a-2ec7-4276-a1d9-c9a3131b8265"
       }
     },
     {
@@ -276,7 +276,7 @@
       "description": "The first step of producing software capable of randomly generating a real-world phenomenon (such as football scores) is simple: get the real-world data.",
       "metadata": {
         "created": 1736098366,
-        "updated": 1738520875,
+        "updated": 1738520967,
         "images": {},
         "videos": {},
         "published": true,
@@ -286,7 +286,7 @@
         "icon": "device:signal-cellular-4-bar",
         "locked": false,
         "readtime": 6,
-        "relatedItems": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047"
+        "relatedItems": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047,item-3069036a-2ec7-4276-a1d9-c9a3131b8265"
       }
     },
     {
