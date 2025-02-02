@@ -582,7 +582,17 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Simulation,Roadmap,Next,Steps",
         "locked": false,
-        "readtime": 1
+        "readtime": 1,
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-blog\\files\\game-sim-mid-fi.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-blog/files/game-sim-mid-fi.png",
+            "url": "files/game-sim-mid-fi.png",
+            "type": "image/png",
+            "name": "game-sim-mid-fi.png",
+            "size": 57973
+          }
+        ]
       }
     }
   ]
