@@ -69,7 +69,7 @@
       "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer.",
       "metadata": {
         "created": 1721493204,
-        "updated": 1739725684,
+        "updated": 1739725887,
         "images": {},
         "videos": {},
         "published": true,
@@ -612,10 +612,10 @@
       "description": "We investigated and fixed some score and tie frequency inaccuracies in the FootballSim model",
       "metadata": {
         "created": 1739638341,
-        "updated": 1739725871,
+        "updated": 1739725915,
         "images": {},
         "videos": {},
-        "published": false,
+        "published": true,
         "hideInMenu": false,
         "image": "files/wact-fbsim.png",
         "tags": "Football,Sim,Score,Tie,Frequency",
