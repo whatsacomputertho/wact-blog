@@ -23,7 +23,7 @@
         "gaID": null
       },
       "created": 1721491387,
-      "updated": 1736614276,
+      "updated": 1739725687,
       "git": {
         "vendor": "github",
         "branch": "gh-pages"
@@ -69,7 +69,7 @@
       "description": "It's ​been ​roughly two years since graduating from Penn State's Schreyer Honors College and joining IBM as a full-time software engineer.",
       "metadata": {
         "created": 1721493204,
-        "updated": 1736292276,
+        "updated": 1739725684,
         "images": {},
         "videos": {},
         "published": true,
@@ -104,7 +104,7 @@
       "description": "During my time at Penn State, I hesitated to fully commit to a mathematics degree.  By the time I did finally commit to pursuing a math degree, I only had enough time",
       "metadata": {
         "created": 1722204429,
-        "updated": 1737825258,
+        "updated": 1739725685,
         "images": {},
         "videos": {},
         "published": false,
@@ -130,7 +130,7 @@
     },
     {
       "id": "item-37e5ae52-d866-4d97-9794-5fa3286e5866",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-37e5ae52-d866-4d97-9794-5fa3286e5866/index.html",
       "slug": "real-analysis/completeness",
       "order": 0,
@@ -139,7 +139,7 @@
       "description": "One way to characterize the real numbers is to simply take an axiomatic approach. ​ ​That is to say that we will first boil their nature down to a single property",
       "metadata": {
         "created": 1723313607,
-        "updated": 1737825270,
+        "updated": 1739725685,
         "images": {},
         "videos": {},
         "published": false,
@@ -171,7 +171,7 @@
       "description": "Nearly a year ago, I came across a book selling for $3 at a small-town thrift store which caught my eye.  The book is called Urban Farming by Thomas J. Fox.",
       "metadata": {
         "created": 1733169633,
-        "updated": 1737825285,
+        "updated": 1739725685,
         "images": {},
         "videos": {},
         "files": [
@@ -243,7 +243,7 @@
       "description": "The thing I find unique about software engineering is the diversity in background.  Everyone has a unique story to tell about how they became a software engineer.  This project is my story.",
       "metadata": {
         "created": 1734996130,
-        "updated": 1738520951,
+        "updated": 1739725685,
         "images": {},
         "videos": {},
         "files": [
@@ -262,12 +262,13 @@
         "tags": "Football,Machine,Learning,ML,AI",
         "locked": false,
         "readtime": 3,
-        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047,item-3069036a-2ec7-4276-a1d9-c9a3131b8265"
+        "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047,item-3069036a-2ec7-4276-a1d9-c9a3131b8265",
+        "status": ""
       }
     },
     {
       "id": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-6ef3afc7-d8a9-4284-b81f-0c18b827225d/index.html",
       "slug": "fbsim-mvp/box-score-scraper",
       "order": 0,
@@ -276,7 +277,7 @@
       "description": "The first step of producing software capable of randomly generating a real-world phenomenon (such as football scores) is simple: get the real-world data.",
       "metadata": {
         "created": 1736098366,
-        "updated": 1738520967,
+        "updated": 1739725686,
         "images": {},
         "videos": {},
         "published": true,
@@ -286,12 +287,13 @@
         "icon": "device:signal-cellular-4-bar",
         "locked": false,
         "readtime": 6,
-        "relatedItems": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047,item-3069036a-2ec7-4276-a1d9-c9a3131b8265"
+        "relatedItems": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-8d9eed84-7def-4fb5-99c2-2a0997247047,item-3069036a-2ec7-4276-a1d9-c9a3131b8265",
+        "status": ""
       }
     },
     {
       "id": "item-0a937bce-00c2-4b0e-b55f-21aa886ed7df",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-0a937bce-00c2-4b0e-b55f-21aa886ed7df/index.html",
       "slug": "fbsim-mvp/box-score-model",
       "order": 1,
@@ -300,7 +302,7 @@
       "description": "To model a game as complex as American football requires a deep understanding of real-world football data.",
       "metadata": {
         "created": 1736114267,
-        "updated": 1738521000,
+        "updated": 1739725686,
         "images": {},
         "videos": {},
         "published": true,
@@ -367,12 +369,13 @@
             "name": "away-score-std-model.png",
             "size": 49963
           }
-        ]
+        ],
+        "status": ""
       }
     },
     {
       "id": "item-23e2afc5-3e91-4a94-b396-9ab780bf4604",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-23e2afc5-3e91-4a94-b396-9ab780bf4604/index.html",
       "slug": "fbsim-mvp/box-score-application",
       "order": 2,
@@ -381,7 +384,7 @@
       "description": "Understanding and modeling the real-world football data will only get us so far.  Now we need to architect an application around our model.",
       "metadata": {
         "created": 1736257173,
-        "updated": 1738521024,
+        "updated": 1739725686,
         "images": {},
         "videos": {},
         "published": true,
@@ -536,12 +539,13 @@
             "name": "fbsim-architecture.png",
             "size": 90277
           }
-        ]
+        ],
+        "status": ""
       }
     },
     {
       "id": "item-8d9eed84-7def-4fb5-99c2-2a0997247047",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-8d9eed84-7def-4fb5-99c2-2a0997247047/index.html",
       "slug": "fbsim-mvp/box-score-deployment",
       "order": 3,
@@ -550,7 +554,7 @@
       "description": "With ​our ​model ​trained and application written, our final task will be to deploy our application.",
       "metadata": {
         "created": 1736616782,
-        "updated": 1738521045,
+        "updated": 1739725686,
         "images": {},
         "videos": {},
         "published": true,
@@ -559,12 +563,13 @@
         "readtime": 15,
         "relatedItems": "item-6ef3afc7-d8a9-4284-b81f-0c18b827225d,item-0a937bce-00c2-4b0e-b55f-21aa886ed7df,item-23e2afc5-3e91-4a94-b396-9ab780bf4604,item-3069036a-2ec7-4276-a1d9-c9a3131b8265",
         "image": "files/wact-fbsim.png",
-        "tags": "Football,Simulation,Docker,Kubernetes,CICD"
+        "tags": "Football,Simulation,Docker,Kubernetes,CICD",
+        "status": ""
       }
     },
     {
       "id": "item-3069036a-2ec7-4276-a1d9-c9a3131b8265",
-      "indent": 0,
+      "indent": 1,
       "location": "pages/item-3069036a-2ec7-4276-a1d9-c9a3131b8265/index.html",
       "slug": "fbsim-mvp/next-steps",
       "order": 4,
@@ -573,7 +578,7 @@
       "description": "What's next for FootballSim now that the MVP is complete?",
       "metadata": {
         "created": 1738516272,
-        "updated": 1738521974,
+        "updated": 1739725687,
         "images": {},
         "videos": {},
         "published": true,
@@ -592,7 +597,8 @@
             "name": "game-sim-mid-fi.png",
             "size": 57973
           }
-        ]
+        ],
+        "status": ""
       }
     },
     {
@@ -606,7 +612,7 @@
       "description": "We investigated and fixed some score and tie frequency inaccuracies in the model",
       "metadata": {
         "created": 1739638341,
-        "updated": 1739725650,
+        "updated": 1739725687,
         "images": {},
         "videos": {},
         "published": true,
@@ -640,7 +646,8 @@
             "name": "adj_model_score_frequency.png",
             "size": 23718
           }
-        ]
+        ],
+        "status": ""
       }
     }
   ]
