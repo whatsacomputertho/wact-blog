@@ -612,11 +612,11 @@
       "description": "We investigated and fixed some score and tie frequency inaccuracies in the FootballSim model",
       "metadata": {
         "created": 1739638341,
-        "updated": 1739725915,
+        "updated": 1739726100,
         "images": {},
         "videos": {},
         "published": true,
-        "hideInMenu": false,
+        "hideInMenu": true,
         "image": "files/wact-fbsim.png",
         "tags": "Football,Sim,Score,Tie,Frequency",
         "locked": false,
