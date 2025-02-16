@@ -603,10 +603,10 @@
       "order": 4,
       "parent": null,
       "title": "Score and Tie Frequency Improvements",
-      "description": "\n",
+      "description": "We investigated and fixed some score and tie frequency inaccuracies in the model",
       "metadata": {
         "created": 1739638341,
-        "updated": 1739725514,
+        "updated": 1739725650,
         "images": {},
         "videos": {},
         "published": true,
