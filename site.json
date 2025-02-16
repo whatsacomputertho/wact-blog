@@ -631,6 +631,14 @@
             "type": "image/png",
             "name": "base_model_score_frequency.png",
             "size": 19772
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-blog\\files\\adj_model_score_frequency.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-blog/files/adj_model_score_frequency.png",
+            "url": "files/adj_model_score_frequency.png",
+            "type": "image/png",
+            "name": "adj_model_score_frequency.png",
+            "size": 23718
           }
         ]
       }
