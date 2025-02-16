@@ -614,7 +614,17 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Sim,Score,Tie,Frequency",
         "locked": false,
-        "readtime": 1
+        "readtime": 1,
+        "files": [
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-blog\\files\\score-frequency.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-blog/files/score-frequency.png",
+            "url": "files/score-frequency.png",
+            "type": "image/png",
+            "name": "score-frequency.png",
+            "size": 15147
+          }
+        ]
       }
     }
   ]
