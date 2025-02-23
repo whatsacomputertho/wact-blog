@@ -305,7 +305,7 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
           &#8203;model &#8203;to &#8203;fit &#8203;the &#8203;data, and &#8203;planned &#8203;to
           &#8203; use &#8203;this &#8203;same &#8203;linear &#8203;regression &#8203;model &#8203;in&#160;
           &#8203;fbsim-core to &#8203;match the &#8203;observed &#8203;tie &#8203;probability.</p>
-<h3 data-original-level="H3" id="header-6febb2b5-2dff-23d9-81df-649c48511f36">Tie-Resimulation</h3>
+<h3 data-original-level="H3" id="header-6febb2b5-2dff-23d9-81df-649c48511f36">Tie Re-simulation</h3>
 <p>The way in &#8203;which &#8203;I &#8203;planned &#8203;to &#8203;fit &#8203;this
             &#8203; observed tie &#8203;probability in &#8203;my &#8203;model &#8203;was &#8203;through
             re-simulating games with &#8203;some &#8203;probability &#8203;when &#8203;a &#8203;tie
@@ -320,7 +320,23 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
             &#8203; case &#8203;would be:</p>
 <p data-text-align="center"><lrn-math mathtext="p_{tie} = (0.042)^{2}  "><span>p_{tie} = (0.042)^{2}  </span></lrn-math>
 
+
 </p>
-<p data-text-align="center"><lrn-math mathtext="p_{tie} = 0.001764"><span>p_{tie} = 0.001764</span></lrn-math>
+<p data-text-align="center"><lrn-math mathtext="\implies p_{tie} = 0.001764"><span>\implies p_{tie} = 0.001764</span></lrn-math>
+
 </p>
-<p>asdfasdf</p>
+<p>Which &#8203;isn't &#8203;quite &#8203;the &#8203;global tie &#8203;probability &#8203;we &#8203;want.&#160; &#8203;Instead, we'll &#8203;need &#8203;to &#8203;strategically &#8203;calculate &#8203;a &#8203;re-simulation &#8203;probability to &#8203;fit &#8203;the observed tie &#8203;probability. &#8203; &#8203;To do &#8203;so, &#8203;we &#8203;will &#8203;need to &#8203;use &#8203;a &#8203;bit &#8203;of &#8203;probability &#8203;and basic arithmetic.</p>
+<p>In &#8203;this &#8203;visualization, we &#8203;see a probability tree representing &#8203;the &#8203;outcome of &#8203;a &#8203;game simulation. The leaves &#8203;in &#8203;this &#8203;tree &#8203;are &#8203;the &#8203;outcomes, and &#8203;the &#8203;probability &#8203;of &#8203;that &#8203;outcome &#8203;occurring &#8203;can be &#8203;derived &#8203;by &#8203;multiplying &#8203;the &#8203;edges &#8203;leading to that &#8203;outcome.</p>
+<media-image source="files/tie-resim-prob-tree.png" card accent-color="grey" size="wide" offset="none" link="files/tie-resim-prob-tree.png" citation="Probability tree of tie re-sim outcomes" disable-zoom></media-image>
+<p>In &#8203;order &#8203;to &#8203;match &#8203;a &#8203;particular &#8203;p_{tie}, we &#8203;can solve &#8203;the &#8203;following &#8203;equality for &#8203;p_{resim}.</p>
+<p><lrn-math mathtext="p_{tie} = (0.042)^{2} p_{resim} + 0.042 (1-p_{resim})"><span>p_{tie} = (0.042)^{2} p_{resim} + 0.042 (1-p_{resim})</span></lrn-math>
+</p>
+<p><lrn-math mathtext="\implies p_{tie} = (0.042)^{2} p_{resim} + 0.042 -0.042 p_{resim}  "><span>\implies p_{tie} = (0.042)^{2} p_{resim} + 0.042 -0.042 p_{resim}  </span></lrn-math>
+</p>
+<p><lrn-math mathtext="\implies p_{tie} - 0.042 = (0.042)^{2} p_{resim} -0.042 p_{resim}  "><span>\implies p_{tie} - 0.042 = (0.042)^{2} p_{resim} -0.042 p_{resim}  </span></lrn-math>
+</p>
+<p><lrn-math mathtext="\implies p_{tie} - 0.042 = p_{resim} ((0.042)^{2} -0.042)    "><span>\implies p_{tie} - 0.042 = p_{resim} ((0.042)^{2} -0.042)    </span></lrn-math>
+</p>
+<p><lrn-math mathtext="\implies \frac{p_{tie} - 0.042}{(0.042)^{2} -0.042} = p_{resim}"><span>\implies \frac{p_{tie} - 0.042}{(0.042)^{2} -0.042} = p_{resim}</span></lrn-math>
+</p>
+<p>asdf</p>
