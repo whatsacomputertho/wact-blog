@@ -102,27 +102,63 @@
 <p>Here &#8203;is &#8203;the &#8203;output &#8203;from &#8203;the &#8203;benchmark
       &#8203;test:</p>
 <code-sample type="javascript" copy-clipboard-button>
-      <template preserve-content="preserve-content">Home score distribution: Skill Diff Mean Score Std Score -100 23.1506 7.6162 -80
-        24.2101 8.1887 -60 25.3185 8.6021 -40 26.4397 8.9407 -20 27.5418 9.2587 0 28.6667
-        9.4145 20 29.7236 9.5225 40 30.8259 9.5603 60 31.8998 9.4884 80 33.0837 9.3034 100
-        34.1129 9.0627 Away score distribution: Skill Diff Mean Score Std Score -100 22.1655
-        6.4798 -80 23.0604 7.2377 -60 23.9255 7.8504 -40 24.8286 8.3757 -20 25.7620 8.7426
-        0 26.6536 9.0463 20 27.5140 9.2175 40 28.4326 9.3427 60 29.2490 9.2932 80 30.1968
-        9.1622 100 31.0702 8.9115</template>
-    </code-sample>
+      
+    <template preserve-content="preserve-content">Home score distribution:
+Skill Diff   Mean Score   Std Score
+-100         23.1506      7.6162
+-80          24.2101      8.1887
+-60          25.3185      8.6021
+-40          26.4397      8.9407
+-20          27.5418      9.2587
+0            28.6667      9.4145
+20           29.7236      9.5225
+40           30.8259      9.5603
+60           31.8998      9.4884
+80           33.0837      9.3034
+100          34.1129      9.0627
+
+Away score distribution:
+Skill Diff   Mean Score   Std Score
+-100         22.1655      6.4798
+-80          23.0604      7.2377
+-60          23.9255      7.8504
+-40          24.8286      8.3757
+-20          25.7620      8.7426
+0            26.6536      9.0463
+20           27.5140      9.2175
+40           28.4326      9.3427
+60           29.2490      9.2932
+80           30.1968      9.1622
+100          31.0702      8.9115</template></code-sample>
 <p>While the mean score model &#8203;was &#8203;fit &#8203;against &#8203;this &#8203;data
       for &#8203;home &#8203;teams:</p>
 <code-sample type="json" copy-clipboard-button>
-      <template preserve-content="preserve-content">"('score', 'mean')": { "0.0": 11.5590551181, "0.125": 13.8620155039, "0.25": 17.0134387352,
-        "0.375": 19.1485774499, "0.5": 22.3723214286, "0.625": 24.8021442495, "0.75": 27.5766828591,
-        "0.875": 31.6327372765, "1.0": 34.9343434343 }</template>
-    </code-sample>
+      
+    <template preserve-content="preserve-content">"('score', 'mean')": {
+  "0.0": 11.5590551181,
+  "0.125": 13.8620155039,
+  "0.25": 17.0134387352,
+  "0.375": 19.1485774499,
+  "0.5": 22.3723214286,
+  "0.625": 24.8021442495,
+  "0.75": 27.5766828591,
+  "0.875": 31.6327372765,
+  "1.0": 34.9343434343
+}</template></code-sample>
 <p>and &#8203;similarly &#8203;for &#8203;away &#8203;teams:</p>
 <code-sample type="json" copy-clipboard-button>
-      <template preserve-content="preserve-content">"('score', 'mean')": { "0.0": 9.3671875, "0.125": 12.2220421394, "0.25": 14.2501797268,
-        "0.375": 16.8838776568, "0.5": 19.3722963645, "0.625": 22.0789733465, "0.75": 25.3302358828,
-        "0.875": 28.9319444444, "1.0": 31.5263157895 }</template>
-    </code-sample>
+      
+    <template preserve-content="preserve-content">"('score', 'mean')": {
+  "0.0": 9.3671875,
+  "0.125": 12.2220421394,
+  "0.25": 14.2501797268,
+  "0.375": 16.8838776568,
+  "0.5": 19.3722963645,
+  "0.625": 22.0789733465,
+  "0.75": 25.3302358828,
+  "0.875": 28.9319444444,
+  "1.0": 31.5263157895
+}</template></code-sample>
 <p>The &#8203;upper &#8203;end &#8203;of &#8203;the &#8203;spectrum for both home and
       away teams seems &#8203;to &#8203;be &#8203;roughly &#8203;aligned, but &#8203;the
       &#8203;lower &#8203;end &#8203;of &#8203;the &#8203;spectrum &#8203;seems &#8203;to
@@ -265,6 +301,7 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
             &#8203;probability &#8203;of &#8203;a &#8203;tie &#8203;occurring &#8203;in &#8203;this
             &#8203;case &#8203;would be:
              <lrn-math>&#8203;</lrn-math>
+
 
 
 
