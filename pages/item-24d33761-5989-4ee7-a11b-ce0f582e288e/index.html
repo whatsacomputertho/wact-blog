@@ -182,14 +182,33 @@ Skill Diff   Mean Score   Std Score
       <a href="https://github.com/whatsacomputertho/fbsim-core/pull/20" target="_blank">I ​fixed ​that ​issue ​in ​this ​PR</a>, &#8203;and &#8203;subsequently &#8203;saw
         &#8203;much &#8203;better &#8203;results &#8203;in &#8203;the benchmark &#8203;testing.</p>
 <code-sample type="javascript" copy-clipboard-button>
-      <template preserve-content="preserve-content">Home score distribution: Skill Diff Mean Score Std Score -100 11.2780 7.1944 -80
-        13.4964 7.8423 -60 15.7159 8.3578 -40 18.0300 8.8404 -20 20.3076 9.1898 0 22.5839
-        9.4275 20 24.9194 9.5291 40 27.2036 9.5548 60 29.5982 9.4513 80 31.8540 9.2936 100
-        34.2193 9.0829 Away score distribution: Skill Diff Mean Score Std Score -100 9.1762
-        6.0629 -80 11.3444 6.8845 -60 13.4862 7.5883 -40 15.6616 8.1947 -20 17.7987 8.6510
-        0 20.0065 9.0046 20 22.2411 9.2066 40 24.4323 9.3496 60 26.7023 9.3638 80 28.9100
-        9.1980 100 31.1470 8.9210</template>
-      </code-sample>
+      
+      <template preserve-content="preserve-content">Home score distribution:
+Skill Diff   Mean Score   Std Score
+-100         11.2780      7.1944
+-80          13.4964      7.8423
+-60          15.7159      8.3578
+-40          18.0300      8.8404
+-20          20.3076      9.1898
+0            22.5839      9.4275
+20           24.9194      9.5291
+40           27.2036      9.5548
+60           29.5982      9.4513
+80           31.8540      9.2936
+100          34.2193      9.0829
+Away score distribution:
+Skill Diff   Mean Score   Std Score
+-100         9.1762       6.0629
+-80          11.3444      6.8845
+-60          13.4862      7.5883
+-40          15.6616      8.1947
+-20          17.7987      8.6510
+0            20.0065      9.0046
+20           22.2411      9.2066
+40           24.4323      9.3496
+60           26.7023      9.3638
+80           28.9100      9.1980
+100          31.1470      8.9210</template></code-sample>
 <h3 data-original-level="H3" id="header-0b3a7445-4360-355e-a9c8-4472991ce4fa">Simulation &#8203;speed &#8203;regression</h3>
 <p>While comparing the output of &#8203;fbsim-core &#8203;v1.0.0-alpha.3 (pre-score
         frequency enhancement) &#8203;and &#8203;v1.0.0-alpha.13 in &#8203;terms &#8203;of
@@ -302,6 +321,7 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
             &#8203;probability &#8203;of &#8203;a &#8203;tie &#8203;occurring &#8203;in &#8203;this
             &#8203;case &#8203;would be:
              <lrn-math>&#8203;</lrn-math>
+
 
 
 
