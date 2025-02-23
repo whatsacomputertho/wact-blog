@@ -283,12 +283,13 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
           &#8203;into &#8203;the &#8203;most &#8203;was &#8203;simply - how do &#8203;we fit
           the &#8203;real-world football &#8203;tie &#8203;frequency?</p>
 <h3 data-original-level="H3" id="header-4ef0fba9-80c9-fa79-7060-c2a79320f924">Exploratory &#8203;Data &#8203;Analysis</h3>
-<p>The &#8203;first &#8203;thing &#8203;I &#8203;did as a &#8203;sanity check was &#8203;calculate
-          the &#8203;real-world global tie &#8203;probability, which &#8203;worked &#8203;out
+<p>The &#8203;first &#8203;thing &#8203;I &#8203;did as a &#8203;sanity check was &#8203;<a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/pull/7" target="_blank">calculate the ​real-world global tie ​probability</a>, which &#8203;worked &#8203;out
           &#8203;to &#8203;be roughly <lrn-math mathtext="p_{tie} = 0.006"><span>p_{tie} = 0.006</span></lrn-math>
+
 . &#8203; &#8203;Then &#8203;I
           &#8203; used &#8203;fbsim &#8203;game &#8203;benchmark &#8203;to &#8203;compare &#8203;this
           against &#8203;the model, whose &#8203;tie probability &#8203;ended &#8203;up &#8203;being <lrn-math mathtext="p_{tie} = 0.042"><span>p_{tie} = 0.042</span></lrn-math>
+
 .&#160;
           &#8203;That means &#8203;my &#8203;model is &#8203;7x &#8203;more &#8203;likely to
           &#8203; produce &#8203;a &#8203;tie &#8203;than &#8203;it &#8203;should &#8203;be!</p>
@@ -303,8 +304,7 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
           and &#8203;decrease &#8203;by &#8203;a &#8203;factor &#8203;of &#8203;10 &#8203;when&#160;
           &#8203;a team fully &#8203;outmatches &#8203;their opponent.</p>
 <media-image source="files/tie_freq_by_skill_diff.png" card citation="Tie probability by skill differential linear regression" accent-color="grey" size="wide" offset="none" link="files/tie_freq_by_skill_diff.png" disable-zoom></media-image>
-<p>I &#8203;ended &#8203;up &#8203;training &#8203;a &#8203;linear &#8203;regression&#160;
-          &#8203;model &#8203;to &#8203;fit &#8203;the &#8203;data, and &#8203;planned &#8203;to
+<p>I &#8203;ended &#8203;up &#8203;<a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/pull/8" target="_blank" role="textbox">training ​a ​linear ​regression ​model ​to ​fit ​the ​data</a>, and &#8203;planned &#8203;to
           &#8203; use &#8203;this &#8203;same &#8203;linear &#8203;regression &#8203;model &#8203;in&#160;
           &#8203;fbsim-core to &#8203;match the &#8203;observed &#8203;tie &#8203;probability.</p>
 <h3 data-original-level="H3" id="header-6febb2b5-2dff-23d9-81df-649c48511f36">Tie Re-simulation</h3>
@@ -316,6 +316,7 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
             &#8203;let me &#8203;walk &#8203;you &#8203;through the logic &#8203;behind &#8203;it.</p>
 <p>First, &#8203;we &#8203;will &#8203;note &#8203;that &#8203;the &#8203;&#8203;global &#8203;tie &#8203;probability that &#8203;we &#8203;observed &#8203;previously in
             &#8203; our &#8203;model &#8203;was <lrn-math mathtext="p_{tie} = 0.042"><span>p_{tie} = 0.042</span></lrn-math>
+
 . &#8203; &#8203;Considering&#160;
             &#8203;this, &#8203;imagine &#8203;if &#8203;we &#8203;simply &#8203;simulated &#8203;all&#160;
             &#8203;games &#8203;that &#8203;ended &#8203;in &#8203;ties.&#160; &#8203;Then &#8203;the
@@ -326,8 +327,10 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies p_{tie} = 0.001764"><span>\implies p_{tie} = 0.001764</span></lrn-math>
+
 
 
 
@@ -337,43 +340,57 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 <media-image source="files/tie-resim-prob-tree.png" card accent-color="grey" size="wide" offset="none" link="files/tie-resim-prob-tree.png" citation="Probability tree of tie re-sim outcomes" disable-zoom></media-image>
 <p>In &#8203;order &#8203;to &#8203;observe &#8203;a &#8203;particular &#8203;<lrn-math mathtext="p_{tie}"><span>p_{tie}</span></lrn-math>
 
+
 , we &#8203;can solve &#8203;the &#8203;following &#8203;equality for <lrn-math mathtext="​p_{resim}"><span>​p_{resim}</span></lrn-math>
+
 
  &#8203;and set &#8203;the &#8203;re-sim &#8203;probability &#8203;accordingly.</p>
 <p data-text-align="center"><lrn-math mathtext="p_{tie} = (0.042)^{2} p_{resim} + 0.042 (1-p_{resim})"><span>p_{tie} = (0.042)^{2} p_{resim} + 0.042 (1-p_{resim})</span></lrn-math>
+
 
 
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies p_{tie} = (0.042)^{2} p_{resim} + 0.042 -0.042 p_{resim}  "><span>\implies p_{tie} = (0.042)^{2} p_{resim} + 0.042 -0.042 p_{resim}  </span></lrn-math>
 
 
+
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies p_{tie} - 0.042 = (0.042)^{2} p_{resim} -0.042 p_{resim}  "><span>\implies p_{tie} - 0.042 = (0.042)^{2} p_{resim} -0.042 p_{resim}  </span></lrn-math>
+
 
 
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies p_{tie} - 0.042 = p_{resim} ((0.042)^{2} -0.042)    "><span>\implies p_{tie} - 0.042 = p_{resim} ((0.042)^{2} -0.042)    </span></lrn-math>
 
 
+
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies \frac{p_{tie} - 0.042}{(0.042)^{2} -0.042} = p_{resim}"><span>\implies \frac{p_{tie} - 0.042}{(0.042)^{2} -0.042} = p_{resim}</span></lrn-math>
+
 
 
 </p>
 <p>Now recall &#8203;that &#8203;we &#8203;implemented &#8203;a &#8203;regression &#8203;model &#8203;in &#8203;which &#8203;the <lrn-math mathtext="p_{tie}"><span>p_{tie}</span></lrn-math>
 
+
  varies based &#8203;on &#8203;skill differential.&#160; &#8203;To &#8203;decide <lrn-math mathtext="​p_{tie}"><span>​p_{tie}</span></lrn-math>
 
+
 , we &#8203;will &#8203;calculate &#8203;the &#8203;skill &#8203;differential &#8203;in &#8203;both directions &#8203;(that &#8203;is, &#8203;home offense / away defense, and &#8203;vice versa), average &#8203;the &#8203;two, &#8203;and &#8203;fetch &#8203;<lrn-math mathtext="p_{tie}"><span>p_{tie}</span></lrn-math>
+
 
  &#8203; from &#8203;the &#8203;regression &#8203;model.</p>
 <p>Then we &#8203;will &#8203;plug &#8203;the &#8203;fetched &#8203;<lrn-math mathtext="p_{tie}"><span>p_{tie}</span></lrn-math>
 
+
  &#8203;into &#8203;the &#8203;above &#8203;equation &#8203;to &#8203;get &#8203;<lrn-math mathtext="p_{resim}"><span>p_{resim}</span></lrn-math>
 
+
 .&#160; &#8203;For example, &#8203;suppose &#8203;the teams &#8203;are &#8203;evenly matched. &#8203; &#8203;Then &#8203;<lrn-math mathtext="p_{tie} = 0.011"><span>p_{tie} = 0.011</span></lrn-math>
+
 &#160; &#8203;according to &#8203;our &#8203;regression &#8203;model. &#8203; &#8203;Plugging &#8203;that &#8203;into &#8203;the &#8203;equation, &#8203;we &#8203;get &#8203;the &#8203;following &#8203;re-sim &#8203;probability.</p>
 <p data-text-align="center"><lrn-math mathtext="p_{resim} = \frac{0.011 - 0.042}{(0.042)^{2} -0.042} = \frac{-0.031}{-0.040236 } = 0.77045431951"><span>p_{resim} = \frac{0.011 - 0.042}{(0.042)^{2} -0.042} = \frac{-0.031}{-0.040236 } = 0.77045431951</span></lrn-math>
+
 
 </p>
 <p>So &#8203;in &#8203;this &#8203;case, &#8203;we &#8203;will &#8203;re-simulate 77% of&#160;&#8203;ties when the &#8203;initial &#8203;simulation &#8203;results &#8203;in &#8203;a &#8203;tie.&#160; &#8203;By the &#8203;above &#8203;calculation, &#8203;we &#8203;know &#8203;that &#8203;in &#8203;doing &#8203;so &#8203;we &#8203;will &#8203;observe &#8203;a tie &#8203;1.1% &#8203;of &#8203;the &#8203;time, &#8203;as &#8203;required.</p>
@@ -393,6 +410,7 @@ Results:
      0.0025  0.0040  0.0051  0.0067  0.0099  0.0098  0.0129  0.0141  0.0165  0.0167  0.0183
 100  0.0021  0.0024  0.0040  0.0050  0.0075  0.0108  0.0124  0.0148  0.0187  0.0218  0.0260</template></code-sample>
 <p>Averaging &#8203;over &#8203;the table, &#8203;we now observe <lrn-math mathtext="p_{tie} = ​0.0071"><span>p_{tie} = ​0.0071</span></lrn-math>
+
 
 <span class="qv3Wpe" id="cwos"> globally, which in my mind is close enough to the observed global tie probability of roughly 0.006.  In any case, it's a huge improvement from the 7x difference we saw previously.</span></p>
 <p><span class="qv3Wpe" id="cwos">Another interesting feature of the above table is that it seems the tie probability increases as the two teams skill levels increase.  That is, an evenly matched game between two bad teams is less likely to result in a tie than an evenly matched game between two good teams.</span></p>
