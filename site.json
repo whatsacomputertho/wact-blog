@@ -612,7 +612,7 @@
       "description": "We investigated and fixed some score and tie frequency inaccuracies in the FootballSim model",
       "metadata": {
         "created": 1739638341,
-        "updated": 1740327578,
+        "updated": 1740329990,
         "images": {},
         "videos": {},
         "published": true,
@@ -620,7 +620,7 @@
         "image": "files/wact-fbsim.png",
         "tags": "Football,Sim,Score,Tie,Frequency",
         "locked": false,
-        "readtime": 10,
+        "readtime": 13,
         "files": [
           {
             "path": "C:\\Users\\ebalc\\Desktop\\wact-blog\\files\\score-frequency.png",
