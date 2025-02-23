@@ -653,6 +653,14 @@
             "type": "image/png",
             "name": "tie_freq_by_skill_diff.png",
             "size": 32460
+          },
+          {
+            "path": "C:\\Users\\ebalc\\Desktop\\wact-blog\\files\\tie-resim-prob-tree.png",
+            "fullUrl": "/C:\\Users\\ebalc\\Desktop\\wact-blog/files/tie-resim-prob-tree.png",
+            "url": "files/tie-resim-prob-tree.png",
+            "type": "image/png",
+            "name": "tie-resim-prob-tree.png",
+            "size": 36168
           }
         ],
         "status": ""
