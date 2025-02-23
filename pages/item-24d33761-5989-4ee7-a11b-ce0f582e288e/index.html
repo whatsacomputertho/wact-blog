@@ -35,8 +35,7 @@
   <a href="https://github.com/whatsacomputertho/fbsim-cli/blob/daef08825329d28a86b05e9bfad7e74faa42888f/src/main.rs#L70-L246" target="_blank">​I ​developed ​a ​new ​command ​in ​fbsim-cli</a>, <code>fbsim ​game ​benchmark</code>.
     &#8203; &#8203;This &#8203;command &#8203;runs &#8203;1.2 million &#8203;simulations,
     &#8203; and then aggregates the results of &#8203;the &#8203;simulations to show us&#160;
-    &#8203;how &#8203;the &#8203;model performs &#8203;statistically.&#160; &#8203;Over
-    &#8203;time, &#8203;we &#8203;want &#8203;to &#8203;improve &#8203;the &#8203;model's
+    &#8203;how &#8203;the &#8203;model performs &#8203;statistically.&#160; &#8203;Over &#8203;time, &#8203;we &#8203;want &#8203;to &#8203;improve &#8203;the &#8203;model's
     &#8203; statistical accuracy &#8203;when tested using &#8203;this &#8203;benchmark&#160;
     &#8203;test.</p>
 <p>I &#8203;then &#8203;<a href="https://github.com/whatsacomputertho/fbdb-boxscore-eda/pull/9" target="_blank">plotted ​the ​data ​from ​the ​benchmark ​test ​against ​fbsim-core ​v1.0.0-alpha.3</a> in
@@ -289,9 +288,11 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 . &#8203; &#8203;Then &#8203;I
           &#8203; used &#8203;fbsim &#8203;game &#8203;benchmark &#8203;to &#8203;compare &#8203;this
           against &#8203;the model, whose &#8203;tie probability &#8203;ended &#8203;up &#8203;being <lrn-math mathtext="p_{tie} = 0.042"><span>p_{tie} = 0.042</span></lrn-math>
+
 
 
 
@@ -326,12 +327,14 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 . &#8203; &#8203;Considering&#160;
             &#8203;this, &#8203;imagine &#8203;if &#8203;we &#8203;simply &#8203;simulated &#8203;all&#160;
             &#8203;games &#8203;that &#8203;ended &#8203;in &#8203;ties.&#160; &#8203;Then &#8203;the
             &#8203; probability &#8203;of &#8203;a &#8203;tie &#8203;occurring &#8203;in &#8203;this
             &#8203; case &#8203;would be:</p>
 <p data-text-align="center"><lrn-math mathtext="p_{tie} = (0.042)^{2}  "><span>p_{tie} = (0.042)^{2}  </span></lrn-math>
+
 
 
 
@@ -349,11 +352,13 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 </p>
 <p>Which &#8203;is a much lower probability than &#8203;the &#8203;global tie &#8203;probability &#8203;we &#8203;want.&#160; &#8203;Instead, we'll &#8203;need &#8203;to &#8203;strategically &#8203;calculate &#8203;a &#8203;re-simulation &#8203;probability to &#8203;fit &#8203;the observed tie &#8203;probability. &#8203; &#8203;To do &#8203;so, &#8203;we &#8203;will &#8203;need to &#8203;use &#8203;a &#8203;bit &#8203;of &#8203;probability &#8203;and basic arithmetic.</p>
 <p>In &#8203;this &#8203;visualization, we &#8203;see a probability tree representing &#8203;the &#8203;outcome of &#8203;a &#8203;game simulation. The leaves &#8203;in &#8203;this &#8203;tree &#8203;are &#8203;the &#8203;outcomes, and &#8203;the &#8203;probability &#8203;of &#8203;that &#8203;outcome &#8203;occurring &#8203;can be &#8203;derived &#8203;by &#8203;multiplying &#8203;the &#8203;edges &#8203;leading to that &#8203;outcome.</p>
 <media-image source="files/tie-resim-prob-tree.png" card accent-color="grey" size="wide" offset="none" link="files/tie-resim-prob-tree.png" citation="Probability tree of tie re-sim outcomes" disable-zoom></media-image>
 <p>In &#8203;order &#8203;to &#8203;observe &#8203;a &#8203;particular &#8203;<lrn-math mathtext="p_{tie}"><span>p_{tie}</span></lrn-math>
+
 
 
 
@@ -365,8 +370,10 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
  &#8203;and set &#8203;the &#8203;re-sim &#8203;probability &#8203;accordingly.</p>
 <p data-text-align="center"><lrn-math mathtext="p_{tie} = (0.042)^{2} p_{resim} + 0.042 (1-p_{resim})"><span>p_{tie} = (0.042)^{2} p_{resim} + 0.042 (1-p_{resim})</span></lrn-math>
+
 
 
 
@@ -381,8 +388,10 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies p_{tie} - 0.042 = (0.042)^{2} p_{resim} -0.042 p_{resim}  "><span>\implies p_{tie} - 0.042 = (0.042)^{2} p_{resim} -0.042 p_{resim}  </span></lrn-math>
+
 
 
 
@@ -397,8 +406,10 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 </p>
 <p data-text-align="center"><lrn-math mathtext="\implies \frac{p_{tie} - 0.042}{(0.042)^{2} -0.042} = p_{resim}"><span>\implies \frac{p_{tie} - 0.042}{(0.042)^{2} -0.042} = p_{resim}</span></lrn-math>
+
 
 
 
@@ -412,13 +423,16 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
  varies based &#8203;on &#8203;skill differential.&#160; &#8203;To &#8203;decide <lrn-math mathtext="​p_{tie}"><span>​p_{tie}</span></lrn-math>
 
 
 
 
 
+
 , we &#8203;will &#8203;calculate &#8203;the &#8203;skill &#8203;differential &#8203;in &#8203;both directions &#8203;(that &#8203;is, &#8203;home offense / away defense, and &#8203;vice versa), average &#8203;the &#8203;two, &#8203;and &#8203;fetch &#8203;<lrn-math mathtext="p_{tie}"><span>p_{tie}</span></lrn-math>
+
 
 
 
@@ -431,7 +445,9 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
  &#8203;into &#8203;the &#8203;above &#8203;equation &#8203;to &#8203;get &#8203;<lrn-math mathtext="p_{resim}"><span>p_{resim}</span></lrn-math>
+
 
 
 
@@ -442,8 +458,10 @@ fn filter_score(&amp;self, score: i32, rng: &amp;mut impl Rng) -&gt; i32 {
 
 
 
+
 &#160; &#8203;according to &#8203;our &#8203;regression &#8203;model. &#8203; &#8203;Plugging &#8203;that &#8203;into &#8203;the &#8203;equation, &#8203;we &#8203;get &#8203;the &#8203;following &#8203;re-sim &#8203;probability.</p>
 <p data-text-align="center"><lrn-math mathtext="p_{resim} = \frac{0.011 - 0.042}{(0.042)^{2} -0.042} = \frac{-0.031}{-0.040236 } = 0.77045431951"><span>p_{resim} = \frac{0.011 - 0.042}{(0.042)^{2} -0.042} = \frac{-0.031}{-0.040236 } = 0.77045431951</span></lrn-math>
+
 
 
 
@@ -467,6 +485,7 @@ Results:
      0.0025  0.0040  0.0051  0.0067  0.0099  0.0098  0.0129  0.0141  0.0165  0.0167  0.0183
 100  0.0021  0.0024  0.0040  0.0050  0.0075  0.0108  0.0124  0.0148  0.0187  0.0218  0.0260</template></code-sample>
 <p>Averaging &#8203;over &#8203;the table, &#8203;we now observe <lrn-math mathtext="p_{tie} = ​0.0071"><span>p_{tie} = ​0.0071</span></lrn-math>
+
 
 
 
